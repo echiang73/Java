@@ -71,17 +71,13 @@ public class BlackJack {
 
     private String promptIputForSpyVision() {
         System.out.println("Before we start, would you like to put on Spy Vision sunglasses to see deck cards?");
-        System.out.println("""
-            Y -> Yes
-            N -> No""");
+        System.out.println("Y -> Yes\nN -> No");
         return scanner.nextLine().toUpperCase();
     }
     
     private String promptUserInput() {
         System.out.println("Please select an option.");
-        System.out.println("""
-            P -> Play
-            Q -> Quit""");
+        System.out.println("P -> Play\nQ -> Quit");
         return scanner.nextLine().toUpperCase();
     }
     
@@ -91,7 +87,6 @@ public class BlackJack {
         while (true) {
             keepPlaying = evaluateBust();
             if (!keepPlaying) {
-                // checkWinner();
                 printScore();
                 break;
             }
@@ -129,10 +124,13 @@ public class BlackJack {
                 handValue += Integer.parseInt(card.face());
             } catch (NumberFormatException e) {
                 switch (card.face()) {
-                    case "J", "Q", "K" -> handValue += 10;
-                    case "A" -> numOfA++;
+                    case "J": 
+                        case "Q": case "K": handValue += 10;
+                        break;
+                    case "A": 
+                        numOfA++;
                 }
-            }  
+            }
         }
 
         // now calculate different combo of total value with A's
@@ -144,10 +142,18 @@ public class BlackJack {
     
     private int calculateAces(int numOfA, int handValue) {
         switch(numOfA) {
-            case 1 -> handValue += (handValue + 11 < 22) ? 11 : 1;
-            case 2 -> handValue += (handValue + 12 < 22) ? 12 : 2;
-            case 3 -> handValue += (handValue + 13 < 22) ? 13 : 3;
-            case 4 -> handValue += (handValue + 14 < 22) ? 14 : 4;
+            case 1: 
+                handValue += (handValue + 11 < 22) ? 11 : 1;
+                break;
+            case 2: 
+                handValue += (handValue + 12 < 22) ? 12 : 2;
+                break;
+            case 3: 
+                handValue += (handValue + 13 < 22) ? 13 : 3;
+                break;
+            case 4: 
+                handValue += (handValue + 14 < 22) ? 14 : 4;
+                break;
         }
         return handValue;
     }
@@ -165,7 +171,6 @@ public class BlackJack {
 
     private List<Card> getNewDeck() {
         List<Card> newDeck = Card.getStandardDeck();
-        // Card.printDeck(newDeck);
         Collections.shuffle(newDeck);
         if (spyVisionOn) {
             Card.printDeck(newDeck);
@@ -181,6 +186,7 @@ public class BlackJack {
 
         playerTotal = assessHandTotal(playerHand);
         dealerTotal = assessHandTotal(dealerHand);
+        System.out.println("line 181 playerTotal = " + playerTotal);
         printInitialHands();
     }
 
@@ -203,9 +209,7 @@ public class BlackJack {
     }
     
     private String promptUserDecision() {
-        System.out.println("""
-            H -> Hit me with another card
-            S -> Stand""");
+        System.out.println("H -> Hit me with another card\nS -> Stand");
         return scanner.nextLine().toUpperCase();
     }
     
@@ -214,15 +218,12 @@ public class BlackJack {
             System.out.println("BLACKJACK!!!");
             wins++;
             gamesPlayed++;
-            // printHands();
             return false;
         } else if (playerTotal < 21) {
             System.out.println("Want would you like to do? Hit or Stand?");
             return true;
         } else {
             System.out.println("Busted!");
-            // printHands();
-            // losses++;
             gamesPlayed++;
             return false;
         }
