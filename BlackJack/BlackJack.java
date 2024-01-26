@@ -63,7 +63,7 @@ public class BlackJack {
                 spyVisionOn = false;
                 break;
             } else {
-                System.out.println("Invalid entry, enter P or Q");
+                System.out.println("Invalid entry, enter Y or N");
                 spyVisionInput = scanner.nextLine().toUpperCase();
             }
         }
