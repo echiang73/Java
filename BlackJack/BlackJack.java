@@ -186,7 +186,6 @@ public class BlackJack {
 
         playerTotal = assessHandTotal(playerHand);
         dealerTotal = assessHandTotal(dealerHand);
-        System.out.println("line 181 playerTotal = " + playerTotal);
         printInitialHands();
     }
 

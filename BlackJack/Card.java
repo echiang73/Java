@@ -30,6 +30,7 @@ public class Card {
 
         public char getImage() {
             return (new char[]{9827, 9830, 9829, 9824})[this.ordinal()];
+            // return (new char[]{'\u2663', '\u2666', '\u2665', '\u2660'})[this.ordinal()]; // java source code
         }
     }
 
@@ -39,9 +40,11 @@ public class Card {
 
     @Override
     public String toString() {
-        int index = face.equals("10") ? 2 : 1;
-        String faceString = face.substring(0, index);
-        return faceString + suit.getImage();
+        // return face + suit.getImage();
+
+        String RESET_BLACK = "\u001B[0m";
+        String RED = "\u001B[31m";
+        return face + (suit == Suit.HEART || suit == Suit.DIAMOND ? RED + suit.getImage() + RESET_BLACK : suit.getImage());
     }
 
     public static Card getNumericCard(Suit suit, int cardNumber) {
@@ -78,16 +81,26 @@ public class Card {
     }
 
     public static void printDeck(List<Card> deck) {
-        printDeck(deck, "Current Deck - Spy Vision", 4);
+        printDeck(deck, "Spy Vision:  Current Deck Order", 4);
     }
 
     public static void printDeck(List<Card> deck, String description, int rows) {
-        System.out.println("-".repeat(9) + description + "-".repeat(9));
+        System.out.println("-".repeat(6) + description + "-".repeat(6));
         int cardsInRow = deck.size() / rows;
         for (int i = 0; i < rows; i++) {
             int startIndex = i * cardsInRow;
             int endIndex = startIndex + cardsInRow;
             deck.subList(startIndex, endIndex).forEach(c -> System.out.print(c + " "));
+            // String RESET = "\u001B[0m";
+            // String RED = "\u001B[31m";
+            // deck.subList(startIndex, endIndex).forEach(c -> {
+            //     if (c.suit == Suit.HEART || c.suit == Suit.DIAMOND) {
+            //         System.out.print(RED + c + " " + RESET);
+            //     } else {
+            //         System.out.print(c + " ");
+            //     }
+                
+            // });
             System.out.println();
         }
         System.out.println("-".repeat(43));
