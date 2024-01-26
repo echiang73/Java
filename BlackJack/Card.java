@@ -81,7 +81,7 @@ public class Card {
     }
 
     public static void printDeck(List<Card> deck) {
-        printDeck(deck, "Spy Vision:  Current Deck Order", 4);
+        printDeck(deck, "Spy Vision - Current Deck Order", 4);
     }
 
     public static void printDeck(List<Card> deck, String description, int rows) {
@@ -91,16 +91,6 @@ public class Card {
             int startIndex = i * cardsInRow;
             int endIndex = startIndex + cardsInRow;
             deck.subList(startIndex, endIndex).forEach(c -> System.out.print(c + " "));
-            // String RESET = "\u001B[0m";
-            // String RED = "\u001B[31m";
-            // deck.subList(startIndex, endIndex).forEach(c -> {
-            //     if (c.suit == Suit.HEART || c.suit == Suit.DIAMOND) {
-            //         System.out.print(RED + c + " " + RESET);
-            //     } else {
-            //         System.out.print(c + " ");
-            //     }
-                
-            // });
             System.out.println();
         }
         System.out.println("-".repeat(43));
@@ -109,7 +99,7 @@ public class Card {
 }
 
 
-// // record not support here
+// // record not support on GitHub Cloudspaces
 
 // import java.util.ArrayList;
 // import java.util.Comparator;
