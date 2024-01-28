@@ -20,7 +20,7 @@ public class BlackJack {
     boolean spyVisionOn;
     
     public void startGame() {
-        System.out.println("Welcome to the Java Blackjack Table");
+        System.out.println("\nWelcome to the Java Blackjack Table");
 
         checkSpyVision();
 
