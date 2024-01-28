@@ -10,6 +10,6 @@ This is a repository of Java files. To run the Java program as a webapp on a bro
 * GitHub repository
 * GitHub Cloudspace JVM and deployment
 
-## Here is the preview of the web application:
+## Here is the preview of the application using terminal:
 
 ![](assets/blackjackGame.png "png")
