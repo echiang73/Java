@@ -1,3 +1,4 @@
+// Basic solution
 public class SpeedConverter {
     public static long toMilesPerHour (double kilometersPerHour) {
         long conversion = Math.round(kilometersPerHour / 1.609);
