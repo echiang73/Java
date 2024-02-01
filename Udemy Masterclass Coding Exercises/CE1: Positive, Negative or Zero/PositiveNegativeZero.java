@@ -10,14 +10,14 @@ public class PositiveNegativeZero {
     }
 }
 
-// // ternary operator
+// // Alternative solution using ternary operator
 // public class PositiveNegativeZero {
 //     public static void checkNumber(int number){
 //         System.out.println(number > 0 ? "positive" : (number < 0 ? "negative" : "zero"));
 //     }
 // }
 
-// // ternary operator with CONSTANTS
+// // Alternative solution using ternary operator with CONSTANTS
 // public class PositiveNegativeZero {
 //     public static void checkNumber(int number){
 //         String POS = "positive";
