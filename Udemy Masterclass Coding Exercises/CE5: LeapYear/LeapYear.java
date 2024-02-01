@@ -21,7 +21,7 @@ public class LeapYear {
 }
 
 
-// Alternatie solution without if/else
+// Alternative solution without if/else
 public class LeapYear {
     public static boolean isLeapYear(int year){
         if(year < 1 || year > 9999){
