@@ -11,6 +11,7 @@ public class MegaBytesConverter {
     }
 }
 
+
 // Alternative solution using ternary operator
 public class MegaBytesConverter {
     public static void printMegaBytesAndKiloBytes(int kiloBytes){
