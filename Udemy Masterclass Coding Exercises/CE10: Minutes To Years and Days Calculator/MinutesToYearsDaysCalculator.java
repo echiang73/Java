@@ -41,3 +41,12 @@ public class MinutesToYearsDaysCalculator {
         System.out.println(minutes < 0 ? "Invalid Value" : (minutes + " min = " + years + " y and " + remainingDays + " d"));
     }
 }
+
+
+// Alternative solution using ternary operator without variables (not recommended as it impacts readability 
+// and ability to create breakpoints and debug calculated values)
+public class MinutesToYearsDaysCalculator {
+    public static void printYearsAndDays(long minutes) {
+        System.out.println(minutes < 0 ? "Invalid Value" : (minutes + " min = " + (minutes)/(60*24*365) + " y and " + (minutes/(24*60)%365) + " d"));
+    }
+}
