@@ -142,4 +142,13 @@ public class NumberInWord {
             default -> "OTHER";
         });
     }
+}
+
+
+// Alternative solution using number as index of the String array
+public class NumberInWord {
+    public static void printNumberInWord(int number) {
+        String[] words = { "ZERO", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "OTHER" };
+        System.out.println(number < 0 || number > 9 ? words[10] : words[number]);
+    }
 }  
