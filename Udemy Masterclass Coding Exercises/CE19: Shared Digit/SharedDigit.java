@@ -84,3 +84,23 @@ public class SharedDigit {
         return list1.stream().anyMatch(n1 -> list2.stream().anyMatch(n2 -> n1 == n2));
     }
 }
+
+
+// Alternative solution using stream to find common List elements (won't pass Udemy checker, lambda is extra method)
+import java.util.*; // List, Arrays
+
+public class SharedDigit {
+    public static void main(String args[]) {
+        System.out.println(hasSharedDigit(13, 57));
+    }
+    
+    public static boolean hasSharedDigit(int num1, int num2) {
+        if (num1 < 10 || num1 > 99 || num2 < 10 || num2 > 99) {
+            return false;
+        }
+        
+        List<Integer> list1 = Arrays.asList(num1%10, num1/10);
+        List<Integer> list2 = Arrays.asList(num2%10, num2/10);
+        return list1.stream().filter(list2::contains).toList().size() != 0;
+    }
+}
