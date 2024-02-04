@@ -68,3 +68,19 @@ public class SharedDigit {
         return IntStream.of(arrNum1).anyMatch(x -> x == arrNum2[0] || x == arrNum2[1]);
     }
 }
+
+
+// Alternative solution using List and stream (won't pass Udemy checker, lambda is extra method)
+import java.util.*; // List, Arrays
+
+public class SharedDigit {
+    public static boolean hasSharedDigit(int num1, int num2) {
+        if (num1 < 10 || num1 > 99 || num2 < 10 || num2 > 99) {
+            return false;
+        }
+        
+        List<Integer> list1 = Arrays.asList(num1%10, num1/10);
+        List<Integer> list2 = Arrays.asList(num2%10, num2/10);
+        return list1.stream().anyMatch(n1 -> list2.stream().anyMatch(n2 -> n1 == n2));
+    }
+}
