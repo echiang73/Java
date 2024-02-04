@@ -59,3 +59,12 @@ public class FirstLastDigitSum {
         return Integer.valueOf(str[0]) + Integer.valueOf(str[str.length-1]);
     }
 }
+
+
+// Alternative solution using String array and ternary operator
+public class FirstLastDigitSum {
+    public static int sumFirstAndLastDigit(int number) {
+        String[] str = ("" + number).split("");
+        return number < 0 ? -1 : Integer.valueOf(str[0]) + Integer.valueOf(str[str.length-1]);
+    }
+}
