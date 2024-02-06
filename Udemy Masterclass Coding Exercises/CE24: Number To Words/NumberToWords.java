@@ -110,6 +110,35 @@ public class NumberToWords {
 }
 
 
+// Alternative solution using String array. Uncomment getDigitCount() and reverse() methods to pass Udemy checker
+public class NumberToWords {
+    public static void numberToWords (int number) {
+        String[] words = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Invalid Value"};
+        String numStr = "" + Math.abs(number);
+        
+        if (number < 0) {
+            System.out.println(words[10]);
+            return;
+        }
+
+        for (int i = 0; i < numStr.length(); i++) {
+            int num = Integer.parseInt(numStr.substring(i, i+1));
+            System.out.println(words[num]);
+        }
+        
+    }
+    
+    // public static int getDigitCount(int number) { // unused by required to pass checker
+    //     return number < 0 ? -1 : ("" + number).length();
+    // }
+    
+    // public static int reverse(int number) { // unused by required to pass checker
+    //     int ret = Integer.parseInt(new StringBuilder("" + Math.abs(number)).reverse().toString());
+    //     return number < 0 ? ret * -1 : ret;
+    // }
+}
+
+
 // Alternative methods for getDigitCount() using String manipulation
     public static int getDigitCount(int number) {
         if (number < 0) {
@@ -140,3 +169,4 @@ public class NumberToWords {
         int result = Integer.valueOf(new StringBuilder("" + Math.abs(number)).reverse().toString());
         return (number < 0) ? result * -1 : result;
     }
+
