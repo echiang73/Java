@@ -110,7 +110,41 @@ public class NumberToWords {
 }
 
 
-// Alternative solution using String array. Uncomment Udemy-required getDigitCount() and reverse() methods to pass checker
+// Alternative solution using String array and String manipulation
+public class NumberToWords {
+    public static void numberToWords(int number) {
+        String[] words = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Invalid Value"};
+        if (number < 0) {
+            System.out.println(words[10]);
+        }
+        int reversedNumber = reverse(number);
+        int numDigitCount = getDigitCount(number);
+        
+        while (numDigitCount > 0){
+            System.out.println(words[reversedNumber%10]);
+            reversedNumber /= 10;
+            numDigitCount--;
+        }
+    }
+    
+    public static int getDigitCount(int number) {
+        if (number < 0) {
+            return -1;
+        }
+        String str = Integer.toString(number);
+        return str.length();
+    }
+    
+    public static int reverse(int number) {
+        StringBuilder forward = new StringBuilder("" + Math.abs(number));
+        StringBuilder reverse = forward.reverse();
+        int result = Integer.valueOf(reverse.toString());
+        return (number < 0) ? result * -1 : result;
+    }
+}
+
+
+// Alternative solution using String array without getDigitCount() and reverse().  Uncomment methods to pass checker
 public class NumberToWords {
     public static void numberToWords (int number) {
         String[] words = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Invalid Value"};
@@ -137,36 +171,3 @@ public class NumberToWords {
     //     return number < 0 ? ret * -1 : ret;
     // }
 }
-
-
-// Alternative methods for getDigitCount() using String manipulation
-    public static int getDigitCount(int number) {
-        if (number < 0) {
-            return -1;
-        }
-        String str = Integer.toString(number);
-        return str.length();
-    }
-
-
-// Alternative methods for getDigitCount() using String manipulation with ternary operator and concatentation
-    public static int getDigitCount(int number) {
-        return number < 0 ? -1 : ("" + number).length();
-    }
-    
-
-// Alternative methods for reverse() using built-in method in StringBuilder or StringBuffer
-    public static int reverse(int number) {
-        StringBuilder forward = new StringBuilder("" + Math.abs(number));
-        StringBuilder reverse = forward.reverse();
-        int result = Integer.valueOf(reverse.toString());
-        return (number < 0) ? result * -1 : result;
-    }
-
-
-// Alternative methods for reverse() using built-in method in StringBuilder using ternary operator
-    public static int reverse(int number) {
-        int result = Integer.valueOf(new StringBuilder("" + Math.abs(number)).reverse().toString());
-        return (number < 0) ? result * -1 : result;
-    }
-
