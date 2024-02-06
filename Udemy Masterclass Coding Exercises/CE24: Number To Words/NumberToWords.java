@@ -1,4 +1,4 @@
-// Basic solution following instruction's advice to get difference of count to print extra "Zero"
+// Basic solution following instruction's advice to get difference of counts to print extra "Zero"
 public class NumberToWords {
     public static void numberToWords(int number) {
         if (number < 0) {
