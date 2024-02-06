@@ -107,7 +107,7 @@ public class GreatestCommonDivisor {
 // Alternative solution using recursion-based Euclidean algorithm (won't pass Udemy checker with 2-digit validation)
 public class GreatestCommonDivisor {
     public static int getGreatestCommonDivisor(int first, int second) {
-        if (first < 10 || second < 10) { // note: requirement prevents recursion from functioning as expected
+        if (first < 10 || second < 10) { // note: required validation prevents recursion from functioning as expected
             return -1;
         }
  
