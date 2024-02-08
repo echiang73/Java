@@ -8,11 +8,11 @@ public class LargestPrime {
         int prime = -1;
 
         for (int i = 2; i <= number; i++) {
-            if (number % i == 0) {
+            if (number%i == 0) {
                 boolean isPrime = true;
                 
                 // check if i is divisible further
-                for (int j = 2 ; j < i; j++) {
+                for (int j = 2; j < i; j++) {
                     if(i%j == 0) { // if i is divisible, then not a prime
                         isPrime = false;
                         break;
@@ -39,10 +39,10 @@ public class LargestPrime {
         int prime = -1;
 
         for (int i = 2; i <= number; i++) {
-            if (number % i == 0) {
+            if (number%i == 0) {
                 boolean isPrime = true;
 
-                for (int j = 2 ; j <= i/2; j++) { // performant, stop at i/2
+                for (int j = 2; j <= i/2; j++) { // performant, stop at i/2
                     if(i%j == 0) {
                         isPrime = false;
                         break;
@@ -68,7 +68,7 @@ public class LargestPrime {
         
         int i = 2;
         while (i < number) {
-            if (number % i == 0) {
+            if (number%i == 0) {
                 number /= i;
                 continue;
             }
@@ -87,7 +87,7 @@ public class LargestPrime {
         }
 
         for (int i = 2; i < number; i++) {
-            if(number % i == 0) {
+            if(number%i == 0) {
                 number /= i;
                 i--; // to negate i++
             }
@@ -105,7 +105,7 @@ public class LargestPrime {
         }
 
         for (int i = number-1; i > 1; i--) { // decrementing
-            if (number % i == 0) {
+            if (number%i == 0) {
                 number = i; // set argument as the divisor
             }
         }
