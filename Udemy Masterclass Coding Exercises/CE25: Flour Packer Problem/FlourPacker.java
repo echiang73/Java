@@ -1,4 +1,10 @@
-// Basic solution, using "brute force" with nested loops
+/* This coding exercise differ from the others in that there are truly multiple approaches to solving this rather
+than simply refactoring by changing syntax or format.  The "simplest" to come up with is using "brute force" with
+nested loops, but this is not concise nor performant.  Alternative approaches uses modulo, Math.min(), as well as
+recursion.  Understanding how each approach works will really solidify your Java fundamentals. */
+
+
+// Basic solution, using "brute force" with nested loops (not performant, quadratic time complexity)
 public class FlourPacker {
     public static boolean canPack(int bigCount, int smallCount, int goal) {
         if (goal < 0) {
@@ -55,7 +61,7 @@ public class FlourPacker {
 }
 
 
-// Alternative solution without loops, using modulo to get "remaining" goal
+// Alternative solution without loops, using modulo to get "remaining" goal (constant time complexity)
 public class FlourPacker {
     public static boolean canPack(int bigCount, int smallCount, int goal) {
         if (goal >= 0) {
@@ -68,7 +74,7 @@ public class FlourPacker {
 }
 
 
-// Alternative solution performant, using modulo to get "remaining" goal as single-line return statement
+// Alternative solution using modulo to get "remaining" goal as single-line return statement
 public class FlourPacker {
     public static boolean canPack(int bigCount, int smallCount, int goal) {
         return goal >= 0 && bigCount*5 + smallCount >= goal && goal%5 <= smallCount;
@@ -76,15 +82,15 @@ public class FlourPacker {
 }
 
 
-// Alternative solution using ternary operator to find requiredSmallCount, i.e. remaining goal after removing bigCount
+// Alternative solution using ternary operator to find smallCount needed, i.e. remaining goal after removing bigCount
 public class FlourPacker {
     public static boolean canPack(int bigCount, int smallCount, int goal) {
         if (goal < 0) {
             return false;
         }
 
-        int requiredSmallCount = goal/5 <= bigCount ? goal%5 : goal - bigCount*5;
-        return requiredSmallCount <= smallCount;
+        int smallNeeded = goal/5 <= bigCount ? goal%5 : goal - bigCount*5;
+        return smallNeeded <= smallCount;
     }
 }
 
