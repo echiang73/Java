@@ -87,3 +87,16 @@ public class FlourPacker {
         return requiredSmallCount <= smallCount;
     }
 }
+
+
+// Alternative solution using Math.min()
+public class FlourPacker {
+    public static boolean canPack(int bigCount, int smallCount, int goal) {
+        if (goal >= 0) {
+            int bigUsed = Math.min(bigCount, goal/5);
+            int smallUsed = Math.min(smallCount, goal - (bigUsed*5));
+            return (bigUsed*5 + smallUsed) == goal;
+        }
+        return false;
+    }
+}
