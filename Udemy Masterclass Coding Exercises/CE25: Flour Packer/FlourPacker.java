@@ -74,3 +74,16 @@ public class FlourPacker {
         return goal >= 0 && bigCount*5 + smallCount >= goal && goal%5 <= smallCount;
     }
 }
+
+
+// Alternative solution using ternary operator to find requiredSmallCount, i.e. remaining goal after removing bigCount
+public class FlourPacker {
+    public static boolean canPack(int bigCount, int smallCount, int goal) {
+        if (goal < 0) {
+            return false;
+        }
+
+        int requiredSmallCount = goal/5 <= bigCount ? goal%5 : goal - bigCount*5;
+        return requiredSmallCount <= smallCount;
+    }
+}
