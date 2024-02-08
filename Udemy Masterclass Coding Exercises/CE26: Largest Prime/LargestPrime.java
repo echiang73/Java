@@ -57,3 +57,58 @@ public class LargestPrime {
         return prime;
     }
 }
+
+
+// Alternative solution using one loop to keep checking for divisors
+public class LargestPrime {
+    public static int getLargestPrime(int number) {
+        if (number < 2) {
+            return -1;
+        }
+        
+        int i = 2;
+        while (i < number) {
+            if (number % i == 0) {
+                number /= i;
+                continue;
+            }
+            i++;
+        }
+        return number;
+    }
+}
+
+
+// Alternative solution using one loop to keep checking for divisors
+public class LargestPrime {
+    public static int getLargestPrime(int number) {
+        if (number < 2) {
+            return -1;
+        }
+
+        for (int i = 2; i < number; i++) {
+            if(number % i == 0) {
+                number /= i;
+                i--; // to negate i++
+            }
+        }
+        return number;
+    }
+}
+
+
+// Alternative solution iterating loop by decrementing down toward 1 and assigning argument as divisor
+public class LargestPrime {
+    public static int getLargestPrime(int number) {
+        if (number < 2) {
+            return -1;
+        }
+
+        for (int i = number-1; i > 1; i--) { // decrementing
+            if (number % i == 0) {
+                number = i; // set argument as the divisor
+            }
+        }
+        return number;
+    }
+}
