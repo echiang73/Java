@@ -1,7 +1,7 @@
-/* This coding exercise differ from the others in that there are truly multiple approaches to solving this rather
-than simply refactoring by changing syntax or format.  The "simplest" to come up with is using "brute force" with
-nested loops, but this is not concise nor performant.  Alternative approaches uses modulo, Math.min(), as well as
-recursion.  Understanding how each approach works will really solidify your Java fundamentals. */
+/* This coding exercise differs from the others in that there are truly multiple approaches to solving this rather
+than simply refactoring by changing syntax or format.  The "simplest" solution to come up with is using "brute force"
+with nested loops, but this is not concise nor performant.  Alternative approaches uses modulo, Math.min(), as well
+as recursion.  Understanding how each approach works will really solidify your Java fundamentals. */
 
 
 // Basic solution, using "brute force" with nested loops (not performant, quadratic time complexity)
