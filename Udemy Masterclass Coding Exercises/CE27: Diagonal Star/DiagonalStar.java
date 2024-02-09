@@ -69,3 +69,38 @@ public class DiagonalStar {
 // **   **
 // *******
 
+
+// Alternative solution using ternary operator
+public class DiagonalStar {
+    public static void printSquareStar(int number) {
+        if (number < 5) {
+            System.out.println("Invalid Value");
+            return;
+        }
+        for(int i = 1; i <= number; i++) {
+            for (int j = 1; j <= number; j++) {
+                System.out.print((i == 1 || i == number || j == 1 || j == number || i == j || j == number - i + 1) ? "*" : " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+// Alternative solution concatenating String to print once at the end
+public class DiagonalStar {
+    public static void printSquareStar (int number){
+        if (number<5) {
+            System.out.println ("Invalid Value");
+            return;
+        }
+        String output = "";
+        for (int i = 1; i <= number; i++) {
+            for (int j = 1; j <= number; j++) {
+                output += (i == 1 || i == number || j == 1 || j == number || i == j || j == number - i + 1) ? "*" : " ";
+            }
+            output += "\n";
+        }
+        System.out.println(output);
+    }
+}
