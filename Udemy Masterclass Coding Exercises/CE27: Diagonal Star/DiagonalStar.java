@@ -143,16 +143,16 @@ public class DiagonalStar {
             System.out.println("Invalid Value");
             return;
         }
-        for (int i = 1; i <= number * number; i++) {
-            if (i % number == 0) {
+        for (int i = 1; i <= number*number; i++) {
+            if (i%number == 0) {
                 System.out.println("*");
             } else {
                 System.out.print(
                 (i >= 1 && i <= number)
-                || (i >= number*number - number)
-                || (i - 1) % number == 0
-                || i / number + 1 == i % number
-                || i % number == number - (i / number + 1) + 1
+                || (i >= number*number-number)
+                || (i-1)%number == 0
+                || i/number+1 == i%number
+                || i%number == number-(i/number+1)+1
                 ? "*" : " ");
             }
         }
@@ -167,12 +167,12 @@ public class DiagonalStar {
             System.out.println("Invalid Value");
             return;
         }
-        for (int i = 1; i <= number * number; i++) {
+        for (int i = 1; i <= number*number; i++) {
             boolean isStar = (i >= 1 && i <= number)
-                || (i >= number*number - number)
-                || (i - 1) % number == 0
-                || i / number + 1 == i % number
-                || i % number == number - (i / number + 1) + 1;
+                || (i >= number*number-number)
+                || (i-1)%number == 0
+                || i/number+1 == i%number
+                || i%number == number-(i/number+1)+1;
             System.out.print(i%number == 0 ? "*\n" : (isStar ? "*" : " "));
         }
     }
