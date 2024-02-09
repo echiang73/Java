@@ -6,7 +6,7 @@ the savvy programmers that prefer corresponding to 0 index).  I also included al
 for conciseness and using String concatenation.  Lastly, there are two advanced solutions that uses a single for loop
 to print the pattern.
 
-If printing star patterns are still too confusing, here is a really good YouTube video that explains the basic concept of
+If printing star patterns is still too confusing, here is a really good YouTube video that explains the basic concept of
 how to print line by line.  https://www.youtube.com/watch?v=xzstcj3Cuso
 */
 
