@@ -68,7 +68,7 @@ public class DiagonalStar {
 // *******
 
 
-// Alternative solution using ternary operator
+// Alternative solution using ternary operator and deleting else keyword
 public class DiagonalStar {
     public static void printSquareStar(int number) {
         if (number < 5) {
@@ -104,7 +104,7 @@ public class DiagonalStar {
 }
 
 
-// Alternative solution with one loop
+// Alternative solution with one for loop
 public class DiagonalStar {
     public static void printSquareStar(int number) {
         if (number < 5) {
@@ -128,7 +128,7 @@ public class DiagonalStar {
 }
 
 
-// Alternative solution with one loop and nested ternary operator (not recommended as readability impacted)
+// Alternative solution with one loop and nested ternary operators (not recommended as readability impacted)
 public class DiagonalStar {
     public static void printSquareStar(int number) {
         if (number < 5) {
