@@ -1,3 +1,15 @@
+/* This is a fun, but challenging coding exercise since it requires some visualization to program.  Thus, I provided
+a solution that prints letters instead of asterisk so you can visualize the correlation between the condition and the
+location of the output on the square.  I also provide two versions of the solution where the nested loop starts to
+increment with 1 (which may make more logical sense as first row) or the nested loop starts to increment with 0 (for
+the savvy programmers that prefer corresponding to 0 index).  I also included alternative solutions using ternary operator
+for conciseness and using String concatenation.  Lastly, there are two advanced solutions that uses a single for loop
+to print the pattern.
+
+If printing star patterns are still too confusing, here is a really good YouTube video that explains the basic concept of
+how to print line by line.  https://www.youtube.com/watch?v=xzstcj3Cuso
+*/
+
 // Visualization solution with main method and printing letters and test on IDE
 public class DiagonalStar {
     public static void main(String args[]) {
