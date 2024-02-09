@@ -31,7 +31,6 @@ public class DiagonalStar {
         }
     }
 }
-
 // TTTTTTT
 // LD   UR
 // L D U R
@@ -60,7 +59,6 @@ public class DiagonalStar {
         }
     }
 }
-
 // *******
 // **   **
 // * * * *
@@ -89,7 +87,7 @@ public class DiagonalStar {
 
 // Alternative solution concatenating String to print once at the end
 public class DiagonalStar {
-    public static void printSquareStar (int number){
+    public static void printSquareStar(int number){
         if (number<5) {
             System.out.println ("Invalid Value");
             return;
@@ -102,5 +100,48 @@ public class DiagonalStar {
             output += "\n";
         }
         System.out.println(output);
+    }
+}
+
+
+// Alternative solution with one loop
+public class DiagonalStar {
+    public static void printSquareStar(int number) {
+        if (number < 5) {
+            System.out.println("Invalid Value");
+            return;
+        }
+        for (int i = 1; i <= number * number; i++) {
+            if (i % number == 0) {
+                System.out.println("*");
+            } else {
+                System.out.print(
+                (i >= 1 && i <= number)
+                || (i >= number*number - number)
+                || (i - 1) % number == 0
+                || i / number + 1 == i % number
+                || i % number == number - (i / number + 1) + 1
+                ? "*" : " ");
+            }
+        }
+    }
+}
+
+
+// Alternative solution with one loop and nested ternary operator (not recommended as readability impacted)
+public class DiagonalStar {
+    public static void printSquareStar(int number) {
+        if (number < 5) {
+            System.out.println("Invalid Value");
+            return;
+        }
+        for (int i = 1; i <= number * number; i++) {
+            boolean isStar = (i >= 1 && i <= number)
+                || (i >= number*number - number)
+                || (i - 1) % number == 0
+                || i / number + 1 == i % number
+                || i % number == number - (i / number + 1) + 1;
+            System.out.print(i%number == 0 ? "*\n" : (isStar ? "*" : " "));
+        }
     }
 }
