@@ -32,7 +32,7 @@ public class Person {
         return age > 12 && age < 20;
     }
     
-    public String getFullName(){
+    public String getFullName() {
         if (firstName.isEmpty() && !lastName.isEmpty()) {
             return lastName;
         } else if (!firstName.isEmpty() && lastName.isEmpty()) {
@@ -45,4 +45,15 @@ public class Person {
 }
 
 
+// Alternative getFullName() method using String.format()
+    public String getFullName() {
+        if (firstName.isEmpty() && !lastName.isEmpty()) {
+            return lastName;
+        } else if (!firstName.isEmpty() && lastName.isEmpty()) {
+            return firstName;
+        } else if (firstName.isEmpty() && lastName.isEmpty()) {
+            return "";
+        }
+        return String.format("%s %s", firstName, lastName);
+    }
 
