@@ -57,3 +57,8 @@ public class Person {
         return String.format("%s %s", firstName, lastName);
     }
 
+
+// Alternative getFullName() method using trim()
+    public String getFullName() {
+         return  (firstName + " " + lastName).trim();
+    }
