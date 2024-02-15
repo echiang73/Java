@@ -104,9 +104,26 @@ public class LargestPrime {
             return -1;
         }
 
-        for (int i = number-1; i > 1; i--) { // decrementing
+        for (int i = number; i > 1; i--) { // decrementing
             if (number%i == 0) {
                 number = i; // set argument as the divisor
+            }
+        }
+        return number;
+    }
+}
+
+
+Alternative solution iterating loop by decrementing down toward 1 and optimized by start i at number/2
+public class LargestPrime {
+    public static int getLargestPrime(int number) {
+        if (number < 2) {
+            return -1;
+        }
+ 
+        for (int i = number/2; i >= 2; i--) { // optimized i = number/2
+            if (number % i == 0) {
+                number = i;
             }
         }
         return number;
