@@ -42,3 +42,11 @@ public class Ford extends Car {
         return ("The " + getClass().getSimpleName() + " is breaking.");
     }
 }
+
+
+// Alternative solution without unnecessary overriding methods (works on IDE but won't pass checker since not polymorphism)
+public class Ford extends Car {
+    public Ford(int cylinders, String name) {
+        super(cylinders, name);
+    }
+}
