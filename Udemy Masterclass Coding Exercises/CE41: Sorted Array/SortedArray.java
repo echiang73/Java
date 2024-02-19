@@ -64,8 +64,11 @@ public class SortedArray {
 }
 
 
-// sortIntegers() method:  there are several approaches for this sorting method.  Each method is extracted out of the solution
-// and listed for ease of comparison.  Note some of the method will require importing modules.
+/* sortIntegers() method:  there are several approaches for this sorting method.  Each method is extracted out
+of the solution and listed for ease of comparison.  Note some of the method will require importing modules, i.e. 
+import java.util.*; // Scanner, Arrays, List, ArrayList
+import java.util.stream.*; // Collectors, IntStream
+*/
 
     // Basic method using nested loops to sort array (bubble sort, O(n^2))...shown in above solution
     public static int[] sortIntegers(int[] array) {
@@ -141,10 +144,7 @@ public class SortedArray {
     
     
     // Alternative method using IntStream and Collection to reverseOrder
-    // import java.util.*; // Scanner, Arrays, List, ArrayList
-    // import java.util.stream.*; // Collectors, IntStream
     public static int[] sortIntegers(int[] array) {
-        
         // Create List with values from int array using IntStream
         List<Integer> list = new ArrayList<>(IntStream.of(array).boxed().collect(Collectors.toList()));
         
@@ -160,10 +160,7 @@ public class SortedArray {
     }
     
     // Alternative method using stream and Collection to reverseOrder
-    // import java.util.*; // Scanner, Arrays, List, ArrayList
-    // import java.util.stream.*; // Collectors, IntStream
     public static int[] sortIntegers(int[] array) {
-        
         // Create List with values from int array
         List<Integer> list = Arrays.stream(array).boxed().collect(Collectors.toList());
         
