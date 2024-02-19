@@ -64,8 +64,8 @@ public class SortedArray {
 }
 
 
-/* sortIntegers() method:  there are several approaches for this sorting method.  Each method is extracted out
-of the solution and listed for ease of comparison.  Note some of the method will require importing modules, i.e. 
+/* sortIntegers() method:  there are several approaches for this sorting method.  Each method is extracted out of
+the solution and listed below for ease of comparison.  Note some of the method will require importing modules, i.e. 
 import java.util.*; // Scanner, Arrays, List, ArrayList
 import java.util.stream.*; // Collectors, IntStream
 */
