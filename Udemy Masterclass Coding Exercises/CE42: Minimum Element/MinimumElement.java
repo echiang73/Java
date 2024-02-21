@@ -13,7 +13,11 @@ public class MinimumElement {
         Scanner scanner = new Scanner(System.in);
         int[] array = new int[numElements];
         for (int i = 0; i < numElements; i++) {
-            array[i] = scanner.nextInt();   
+            try {
+                array[i] = scanner.nextInt();   
+            } catch (Exception e) {
+                System.out.println("Invalid input, please enter a number.");
+            }
         }
         return array;
     }
