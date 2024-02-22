@@ -43,3 +43,75 @@ public class ReverseArray {
         System.out.println("Reversed array = " + Arrays.toString(arr));
     }
 }
+
+
+// Alternative (crazy) solution using IntStream and Collection to reverse (printing new object)
+import java.util.*; // Arrays, List, ArrayList
+import java.util.stream.*; // Collectors, IntStream
+
+public class ReverseArray {
+    private static void reverse(int[] arr) {
+        System.out.println("Array = " + Arrays.toString(arr));
+
+        // Create List with values from int array using IntStream
+        List<Integer> list = new ArrayList<>(IntStream.of(arr).boxed().collect(Collectors.toList()));
+        
+        // Reverse using Collections
+        Collections.reverse(list);
+        
+        // Create new int array and insert List values
+        int[] newArr = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            newArr[i] = list.get(i);
+        }
+        
+        System.out.println("Reversed array = " + Arrays.toString(newArr));
+    }
+}
+
+
+// Alternative (crazy) solution using stream and Collection to reverse (printing new object)
+import java.util.*; // Arrays, List, ArrayList
+import java.util.stream.*; // Collectors, IntStream
+
+public class ReverseArray {
+    private static void reverse(int[] arr) {
+        System.out.println("Array = " + Arrays.toString(arr));
+
+        // Create List with values from int array using stream
+        List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
+        
+        // Reverse using Collections
+        Collections.reverse(list);
+        
+        // Create new int array and insert List values
+        int[] newArr = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            newArr[i] = list.get(i);
+        }
+        
+        System.out.println("Reversed array = " + Arrays.toString(newArr));
+    }
+}
+
+
+// Alternative (crazy) solution using stream and Collection to reverse and mapToInt (printing new object)
+import java.util.*; // Arrays, List, ArrayList
+import java.util.stream.*; // Collectors, IntStream
+
+public class ReverseArray {
+    private static void reverse(int[] arr) {
+        System.out.println("Array = " + Arrays.toString(arr));
+
+        // Create List with values from int array using stream
+        List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
+        
+        // Reverse using Collections
+        Collections.reverse(list);
+        
+        // Create new int array and insert List values
+        int[] newArr = list.stream().mapToInt(Integer::intValue).toArray();
+        
+        System.out.println("Reversed array = " + Arrays.toString(newArr));
+    }
+}
