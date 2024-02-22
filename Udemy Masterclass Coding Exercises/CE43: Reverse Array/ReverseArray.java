@@ -115,3 +115,53 @@ public class ReverseArray {
         System.out.println("Reversed array = " + Arrays.toString(newArr));
     }
 }
+
+
+// Alternative (uber crazy) solution using StringBuilder and built-in reverse() (printing new object)
+import java.util.Arrays;
+
+public class ReverseArray {
+    private static void reverse(int[] arr) {
+        System.out.println("Array = " + Arrays.toString(arr));
+
+        // Create SB and insert each int with space
+        StringBuilder sb = new StringBuilder();
+        for (int e : arr) {
+            sb.append("" + e + " ");
+        }
+        
+        // Reverse sb and insert as String array
+        String[] revStrArr = sb.reverse().toString().trim().split(" ");
+        
+        // Reverse each element of the String array
+        for(int i = 0; i < revStrArr.length; i++) {
+            String tempStr = new StringBuilder(revStrArr[i]).reverse().toString();
+            revStrArr[i] = tempStr;
+        }
+        
+        System.out.println("Reversed array = " + Arrays.toString(revStrArr));
+    }
+}
+
+
+// Alternative (uber crazy) solution using nested StringBuilder and built-in reverse() (printing new object)
+import java.util.Arrays;
+
+public class ReverseArray {
+    private static void reverse(int[] arr) {
+        System.out.println("Array = " + Arrays.toString(arr));
+
+        // Create SB and insert each int with space
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < arr.length; i++) {
+            // Reverse each element of the String array before appending to sb
+            String tempIntStr = new StringBuilder("" + arr[i] + " ").reverse().toString();
+            sb.append(tempIntStr);
+        }
+        
+        // Reverse sb and insert as String array
+        String[] revStrArr = sb.reverse().toString().trim().split(" ");
+        
+        System.out.println("Reversed array = " + Arrays.toString(revStrArr));
+    }
+}
