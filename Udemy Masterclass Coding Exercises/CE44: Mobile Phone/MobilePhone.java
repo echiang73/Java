@@ -54,11 +54,10 @@ public class MobilePhone {
     }
  
     public Contact queryContact(String name) {
-        // if (findContact(name) >= 0) {
-        //     return myContacts.get(findContact(name));
-        // }
-        // return null;
-        return (findContact(name) >= 0) ? myContacts.get(findContact(name)) : null;
+        if (findContact(name) >= 0) {
+            return myContacts.get(findContact(name));
+        }
+        return null;
     }
  
     public void printContacts(){
@@ -70,3 +69,9 @@ public class MobilePhone {
         }
     }
 }
+
+
+ // Alternative queryContact() method using ternary operator
+    public Contact queryContact(String name) {
+        return (findContact(name) >= 0) ? myContacts.get(findContact(name)) : null;
+    }
