@@ -45,3 +45,14 @@ public class Branch {
         return null;
     }
 }
+
+
+// Alternative findCustomer() method using enhanced for loop
+    private Customer findCustomer(String customerName) {
+        for (Customer customer : customers) {
+            if (customer.getName().equals(customerName)) {
+                return customer;
+            }
+        }
+        return null;
+    }
