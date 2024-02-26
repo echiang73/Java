@@ -7,7 +7,7 @@ public class Branch {
  
     public Branch(String name) {
         this.name = name;
-        this.customers = new ArrayList<Customer>();
+        customers = new ArrayList<Customer>();
     }
  
     public String getName() {
@@ -18,18 +18,18 @@ public class Branch {
         return customers;
     }
  
-    public boolean newCustomer(String customerName, double initialAmount){
+    public boolean newCustomer(String customerName, double initialTransaction){
         if (findCustomer(customerName) == null){
-            customers.add(new Customer(customerName, initialAmount));
+            customers.add(new Customer(customerName, initialTransaction));
             return true;
         }
         return false;
     }
  
-    public boolean addCustomerTransaction(String customerName, double amount){
-        Customer existingCustomer = findCustomer(customerName);
-        if (existingCustomer != null){
-            existingCustomer.addTransaction(amount);
+    public boolean addCustomerTransaction(String customerName, double transaction){
+        Customer customer = findCustomer(customerName);
+        if (customer != null){
+            customer.addTransaction(transaction);
             return true;
         }
         return false;
