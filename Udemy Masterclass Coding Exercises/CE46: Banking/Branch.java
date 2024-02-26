@@ -18,28 +18,28 @@ public class Branch {
         return customers;
     }
  
-    public boolean newCustomer(String customerName, double initialTransaction){
-        if (findCustomer(customerName) == null){
+    public boolean newCustomer(String customerName, double initialTransaction) {
+        if (findCustomer(customerName) == null) {
             customers.add(new Customer(customerName, initialTransaction));
             return true;
         }
         return false;
     }
  
-    public boolean addCustomerTransaction(String customerName, double transaction){
+    public boolean addCustomerTransaction(String customerName, double transaction) {
         Customer customer = findCustomer(customerName);
-        if (customer != null){
+        if (customer != null) {
             customer.addTransaction(transaction);
             return true;
         }
         return false;
     }
  
-    private Customer findCustomer(String customerName){
-        for (int i = 0; i < customers.size(); i++){
-            Customer checkedCustomer = customers.get(i);
-            if (checkedCustomer.getName().equals(customerName)){
-                return checkedCustomer;
+    private Customer findCustomer(String customerName) {
+        for (int i = 0; i < customers.size(); i++) {
+            Customer customer = customers.get(i);
+            if (customer.getName().equals(customerName)) {
+                return customer;
             }
         }
         return null;
