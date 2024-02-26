@@ -10,25 +10,25 @@ public class Bank {
         branches = new ArrayList<>();       
     }
  
-    public boolean addBranch(String branchName){
-        if (findBranch(branchName) == null){
+    public boolean addBranch(String branchName) {
+        if (findBranch(branchName) == null) {
             branches.add(new Branch(branchName));
             return true;
         } 
         return false;
     }
  
-    public boolean addCustomer(String branchName, String customerName, double initialTransaction){
+    public boolean addCustomer(String branchName, String customerName, double initialTransaction) {
         Branch branch = findBranch(branchName);
-        if (branch != null){
+        if (branch != null) {
             return branch.newCustomer(customerName, initialTransaction);
         }
         return false;
     }
  
-    public boolean addCustomerTransaction(String branchName, String customerName, double transaction){
+    public boolean addCustomerTransaction(String branchName, String customerName, double transaction) {
         Branch branch = findBranch(branchName);
-        if (branch != null){
+        if (branch != null) {
             return branch.addCustomerTransaction(customerName, transaction);
         }
         return false;
@@ -44,7 +44,7 @@ public class Bank {
         return null;
     }
  
-    public boolean listCustomers(String branchName, boolean printTransactions){
+    public boolean listCustomers(String branchName, boolean printTransactions) {
         Branch branch = findBranch(branchName);
         if (branch != null) {
             System.out.println("Customer details for branch " + branch.getName());
