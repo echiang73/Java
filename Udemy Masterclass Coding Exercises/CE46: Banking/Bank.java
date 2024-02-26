@@ -65,3 +65,14 @@ public class Bank {
         return false;
     }
 }
+
+
+// Alternative findBranch() method using enhanced for loop   
+    private Branch findBranch(String branchName) {
+        for (Branch branch : branches) {
+            if (branch.getName().equals(branchName)) {
+                return branch;
+            }
+        }
+        return null;
+    }
