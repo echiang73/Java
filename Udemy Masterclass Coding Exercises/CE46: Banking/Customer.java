@@ -25,7 +25,7 @@ public class Customer {
 }
 
 
-// Alternative solution initialize transactions on one line
+// Alternative solution initialize transactions on one line using Arrays.asList()
 import java.util.*; // ArrayList, Arrays
 
 public class Customer {
