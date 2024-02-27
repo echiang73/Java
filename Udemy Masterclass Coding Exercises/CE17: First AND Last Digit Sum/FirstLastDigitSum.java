@@ -85,6 +85,17 @@ public class FirstLastDigitSum {
 public class FirstLastDigitSum {
     public static int sumFirstAndLastDigit(int number) {
         String str = ("" + number);
+        int first = Integer.valueOf(str.charAt(0) - '0');
+        int last = Integer.valueOf(str.charAt(str.length()-1) - '0');
+        return number < 0 ? -1 : first + last;
+    }
+}
+
+
+// Alternative solution using String and charAt of ASCII char (offset where '0' == 48) using casting
+public class FirstLastDigitSum {
+    public static int sumFirstAndLastDigit(int number) {
+        String str = ("" + number);
         int first = (int) (str.charAt(0) - '0');
         int last = (int) (str.charAt(str.length()-1) - '0');
         return number < 0 ? -1 : first + last;
