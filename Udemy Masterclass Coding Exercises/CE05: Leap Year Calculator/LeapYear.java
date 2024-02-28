@@ -1,18 +1,18 @@
 // Basic solution
 public class LeapYear {
-    public static boolean isLeapYear(int year){
-        if(year < 1 || year > 9999){
+    public static boolean isLeapYear(int year) {
+        if (year < 1 || year > 9999) {
             return false;
         }
         
-        if(year%4 == 0){
-            if(year%100 == 0){
-                if(year%400 == 0){
+        if (year%4 == 0) {
+            if (year%100 == 0) {
+                if (year%400 == 0) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-            }else{
+            } else {
                 return true;
             }
         }
@@ -23,8 +23,8 @@ public class LeapYear {
 
 // Alternative solution without if/else
 public class LeapYear {
-    public static boolean isLeapYear(int year){
-        if(year < 1 || year > 9999){
+    public static boolean isLeapYear(int year) {
+        if (year < 1 || year > 9999) {
             return false;
         }
         return year%4 == 0 && year%100 != 0 || year%400 == 0;
@@ -34,7 +34,7 @@ public class LeapYear {
 
 // Alternative solution using single-line return statement
 public class LeapYear {
-    public static boolean isLeapYear(int year){
+    public static boolean isLeapYear(int year) {
         return year >= 1 && year <= 9999 && (year%4 == 0 && year%100 != 0 || year%400 == 0);
     }
 }
