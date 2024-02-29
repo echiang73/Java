@@ -181,3 +181,8 @@ import java.util.stream.*; // Collectors, IntStream
         Collections.sort(list, Collections.reverseOrder());
         return list.stream().mapToInt(Integer::intValue).toArray();
     }
+
+    // Alternative method using stream and Collection to reverseOrder and mapToInt as single line return statement
+    public static int[] sortIntegers(int[] array) {
+        return Arrays.stream(array).boxed().sorted(Collections.reverseOrder()).mapToInt(Integer::intValue).toArray();
+    }
