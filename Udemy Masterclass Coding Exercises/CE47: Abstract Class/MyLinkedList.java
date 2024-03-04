@@ -40,19 +40,14 @@ public class MyLinkedList implements NodeList {
  
     @Override
     public boolean removeItem(ListItem node) {
-        if (root == null || node == null) {
-            return false;
-        }
-        ListItem current = root;
         while (true) {
-            if (node.compareTo(current) == 0) {
-                current.previous().setNext(null);
+            if (root == null || node == null) {
+                return false;
+            } else if (node.compareTo(root) == 0) {
+                root.previous().setNext(null);
                 return true;
             }
-            current = current.next();
-            if (current == null) {
-                return false;
-            }
+            root = root.next();
         }
     }
  
