@@ -13,42 +13,28 @@ public class MyLinkedList implements NodeList {
  
     @Override
     public boolean addItem(ListItem node) {
-        if (root == null || node == null) {
+        // the list is empty so the item becomes the head of the list
+        if (root == null) {
             root = node;
             return true;
         }
 
-        int nodeValue = Integer.parseInt("" + node.getValue());
         ListItem current = root;
         while (true) {
-            int currentValue = Integer.parseInt("" + current.getValue());
-            if (currentValue == nodeValue) {
-                return false;
-            }
-            if (nodeValue < currentValue) {
-                ListItem oldRoot = root;
-                root = node;
-                root.setNext(oldRoot);
-                oldRoot.setPrevious(root);
+            // if there is no next item, we insert this item at the end of the list
+            if (current.next() == null) {
+                current.setNext(node);
+                node.setPrevious(current);
                 return true;
             }
-            else if (nodeValue > currentValue) {
-                if (current.next() == null) {
-                    current.setNext(node);
-                    node.setPrevious(current);
-                    return true;
-                }
-                int nextValue = Integer.parseInt("" + current.next().getValue());
-                if (nextValue > nodeValue) {
-                    node.setNext(current.next());
-                    node.setPrevious(current);
-                    current.next().setPrevious(node);
-                    current.setNext(node);
-                    return true;
-                }
-                current = current.next();
-                continue;
+            // if there is a next item and new item is smaller, insert this item before current
+            if (current.compareTo(node) == 1) {
+                root = node;
+                root.setNext(current);
+                current.setPrevious(root);
+                return true;
             }
+            return false;
         }
     }
  
