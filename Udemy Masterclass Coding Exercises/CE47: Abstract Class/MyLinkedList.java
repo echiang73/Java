@@ -10,7 +10,7 @@ public class MyLinkedList implements NodeList {
     public ListItem getRoot() {
         return root;
     }
- 
+
     @Override
     public boolean addItem(ListItem node) {
         // the list is empty so the item becomes the head of the list
@@ -43,23 +43,11 @@ public class MyLinkedList implements NodeList {
         if (root == null || node == null) {
             return false;
         }
-        int nodeValue = Integer.parseInt("" + node.getValue());
         ListItem current = root;
         while (true) {
-            int currentValue = Integer.parseInt("" + current.getValue());
-            if (currentValue == nodeValue) {
-                if (current == root) {
-                    root = (current.next() == null) ? null : current.next();
-                    return true;
-                } else if (current.next() == null) {
-                    current.previous().setNext(null);
-                    return true;
-                }
-                current.previous().setNext(current.next());
-                current.next().setPrevious(current.previous());
+            if (node.compareTo(current) == 0) {
+                current.previous().setNext(null);
                 return true;
-            } else if (nodeValue < currentValue) {
-                return false;
             }
             current = current.next();
             if (current == null) {
