@@ -34,7 +34,7 @@ public class SpeedConverter {
 }
 
 
-// Alternative solution using ternary operators as single-line code
+// Alternative solution using ternary operators as single-line code (not recommended)
 public class SpeedConverter {
     public static long toMilesPerHour (double kilometersPerHour) {
         return kilometersPerHour < 0 ? -1 : Math.round(kilometersPerHour / 1.609);
