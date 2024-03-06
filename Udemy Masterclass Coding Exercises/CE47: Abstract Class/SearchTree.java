@@ -61,7 +61,7 @@ public class SearchTree implements NodeList {
         }
     }
     
-    // Call performRemoval() method from removeItem() when the item is found.
+    // Call performRemoval() from removeItem() when the item is found
     private void performRemoval(ListItem itemToRemove, ListItem parent) {
         // Item to remove has no right child
         if (itemToRemove.next() == null) {
