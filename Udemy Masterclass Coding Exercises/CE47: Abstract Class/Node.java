@@ -36,7 +36,7 @@ public class Node extends ListItem {
 }
 
 
-// Alternative compareTo() method using ternary operator and by concatenating, parse and return int
+// Alternative compareTo() method using parseInt() to return int primitive data type:
     @Override
     int compareTo(ListItem other) {
         int x = Integer.parseInt("" + value);
@@ -45,7 +45,7 @@ public class Node extends ListItem {
     }
 
 
-// Alternative compareTo() method by concatenating, and use Integer.valueOf() to return Integer
+// Alternative compareTo() method using valueOf() to return Integer object:
     @Override
     int compareTo(ListItem other) {
         int x = Integer.valueOf("" + value);
