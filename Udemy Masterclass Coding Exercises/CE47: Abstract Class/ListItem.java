@@ -12,7 +12,7 @@ public abstract class ListItem {
     abstract ListItem setNext(ListItem rightLink);
     abstract ListItem previous();
     abstract ListItem setPrevious(ListItem leftLink);
-    abstract int compareTo(ListItem other) throws NumberFormatException;
+    abstract int compareTo(ListItem other);
  
     public Object getValue() {
         return value;
