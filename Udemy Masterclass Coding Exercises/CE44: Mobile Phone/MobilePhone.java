@@ -75,3 +75,18 @@ public class MobilePhone {
     public Contact queryContact(String name) {
         return (findContact(name) >= 0) ? myContacts.get(findContact(name)) : null;
     }
+
+
+// Alternative updateContact() method by calling removeContact() and addNewContact() if order of myContacts doesn't matter, i.e. more like "replace" Contact
+    public boolean updateContact(Contact oldContact, Contact newContact) {
+        for (int i = 0; i < myContacts.size(); i++) {
+            if (myContacts.get(i).getName().equals(oldContact.getName())) {
+                boolean isRemoved = removeContact(oldContact);
+                if (isRemoved) {
+                    return addNewContact(newContact);
+                }
+                return false;
+            }
+        }
+        return false;
+    }
