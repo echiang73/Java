@@ -54,9 +54,7 @@ public class Player implements ISaveable {
         values.add(0, name);
         values.add(1, String.valueOf(hitPoints));
         values.add(2, String.valueOf(strength));
-
         values.add(3, weapon);
- 
         return values;
     }
  
@@ -77,3 +75,15 @@ public class Player implements ISaveable {
                 "weapon='" + weapon + "'}";
     }
 }
+
+
+// Alternative write() method using concatenation hack to convert int to String
+    @Override
+    public List<String> write() {
+        List<String> values = new ArrayList<String>();
+        values.add(0, name);
+        values.add(1, "" + hitPoints);
+        values.add(2, "" + strength);
+        values.add(3, weapon);
+        return values;
+    }
