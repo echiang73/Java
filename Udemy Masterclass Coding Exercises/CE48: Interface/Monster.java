@@ -49,3 +49,14 @@ public class Monster implements ISaveable {
                 hitPoints + ", " + "strength=" + strength + "}";
     }
 }
+
+
+// Alternative write() method using concatenation hack to convert int to String
+    @Override
+    public List<String> write() {
+        List<String> values = new ArrayList<String>();
+        values.add(0, name);
+        values.add(1, "" + hitPoints);
+        values.add(2, "" + strength);
+        return values;
+    }
