@@ -1,6 +1,5 @@
 // Basic solution
 public class Song {
- 
     private String title;
     private double duration;
  
@@ -22,7 +21,6 @@ public class Song {
 
 // Alternative solution using String.format
 public class Song {
- 
     private String title;
     private double duration;
  
