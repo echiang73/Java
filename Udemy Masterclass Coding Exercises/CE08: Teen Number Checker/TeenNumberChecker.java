@@ -29,7 +29,7 @@ public class TeenNumberChecker {
 }
 
 
-// Alternative solution using Arrays.asList(), stream and lambda (extra method won't pass checker):
+// Alternative solution using Arrays.asList(), stream and lambda (extra method won't pass Udemy solution checker):
 import java.util.Arrays;
  
 public class TeenNumberChecker {
@@ -57,7 +57,7 @@ public class TeenNumberChecker {
 }
 
 
-// Alternative solution using stream and use of reference method to pass (will pass checker):
+// Alternative solution using stream and use of reference method (will pass checker):
 import java.util.List;
 
 public class TeenNumberChecker {
