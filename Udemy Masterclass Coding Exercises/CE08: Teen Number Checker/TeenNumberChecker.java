@@ -43,12 +43,12 @@ public class TeenNumberChecker {
 }
 
 
-// Alternative solution using efficient JDK9 factory method List.of(), stream and lambda (extra method won't pass checker):
-import java.util.List;
- 
+// Alternative solution using Arrays.asList(), stream and convert lambda to method reference (will pass checker)
+import java.util.Arrays;
+
 public class TeenNumberChecker {
     public static boolean hasTeen(int num1, int num2, int num3) {
-        return List.of(num1, num2, num3).stream().anyMatch(num -> isTeen(num));
+        return Arrays.asList(num1, num2, num3).stream().anyMatch(TeenNumberChecker::isTeen);
     }
     
     public static boolean isTeen(int num) {        
@@ -57,7 +57,7 @@ public class TeenNumberChecker {
 }
 
 
-// Alternative solution using stream and use of reference method (will pass checker):
+// Alternative solution using JDK9 factory method List.of(), stream and method reference (will pass checker)
 import java.util.List;
 
 public class TeenNumberChecker {
