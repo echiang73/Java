@@ -69,3 +69,17 @@ public class TeenNumberChecker {
         return num >= 13 && num <= 19;
     }
 }
+
+
+// Alternative solution using IntStream and use of reference method (will pass checker)
+import java.util.stream.IntStream;
+
+public class TeenNumberChecker {
+    public static boolean hasTeen(int num1, int num2, int num3) {
+        return IntStream.of(num1, num2, num3).anyMatch(TeenNumberChecker::isTeen);
+    }
+    
+    public static boolean isTeen(int num) {        
+        return num >= 13 && num <= 19;
+    }
+}
