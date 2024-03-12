@@ -19,10 +19,10 @@ public class AreaCalculator {
 // Alternative solution using ternary operator
 public class AreaCalculator {
     public static double area(double radius) {
-        return (radius < 0) ? -1 : Math.PI * radius * radius;
+        return radius < 0 ? -1 : Math.PI * radius * radius;
     }
  
     public static double area(double width, double height) {
-        return (width < 0 || height < 0) ? -1 : width * height;
+        return width < 0 || height < 0 ? -1 : width * height;
     }
 }
