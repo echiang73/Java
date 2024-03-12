@@ -57,7 +57,7 @@ public class TeenNumberChecker {
 }
 
 
-// Alternative solution using JDK9 factory method List.of(), stream and method reference (will pass checker)
+// Alternative solution using JDK9 efficient factory method List.of(), stream and method reference (will pass checker)
 import java.util.List;
 
 public class TeenNumberChecker {
