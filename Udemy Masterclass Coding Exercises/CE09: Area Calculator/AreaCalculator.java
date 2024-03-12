@@ -7,11 +7,11 @@ public class AreaCalculator {
         return Math.PI * radius * radius;
     }
  
-    public static double area(double x, double y) {
-        if (x < 0 || y < 0) {
+    public static double area(double width, double height) {
+        if (width < 0 || height < 0) {
             return -1;
         }
-        return x * y;
+        return width * height;
     }
 }
 
@@ -22,7 +22,7 @@ public class AreaCalculator {
         return (radius < 0) ? -1 : Math.PI * radius * radius;
     }
  
-    public static double area(double x, double y) {
-        return (x < 0 || y < 0) ? -1 : x * y;
+    public static double area(double width, double height) {
+        return (width < 0 || height < 0) ? -1 : width * height;
     }
 }
