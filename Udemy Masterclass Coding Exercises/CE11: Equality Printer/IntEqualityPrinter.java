@@ -69,3 +69,23 @@ public class IntEqualityPrinter {
         }
     }
 }
+
+
+// Alternative solution using JDK9 more performant List.of() instead of Array.asList()
+import java.util.*; // Set, HashSet, List
+
+public class IntEqualityPrinter {
+    public static void printEqual(int num1, int num2, int num3) {
+        String INVALID = "Invalid Value";
+        String DIFF = "All numbers are different";
+        String NEITHER = "Neither all are equal or different";
+        String EQUAL = "All numbers are equal";
+        
+        if (num1 < 0 || num2 < 0 || num3 < 0) {
+            System.out.println(INVALID);
+        } else {
+            Set<Integer> set = new HashSet<Integer>(List.of(num1, num2, num3));
+            System.out.println(set.size()==3 ? DIFF : (set.size()==2 ? NEITHER : EQUAL));
+        }
+    }
+}
