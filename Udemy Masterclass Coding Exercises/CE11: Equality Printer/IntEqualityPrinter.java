@@ -89,3 +89,43 @@ public class IntEqualityPrinter {
         }
     }
 }
+
+
+// Alternative solution using stream with distinct and count to avoid duplication
+import java.util.List;
+
+public class IntEqualityPrinter {
+    public static void printEqual(int num1, int num2, int num3) {
+        String INVALID = "Invalid Value";
+        String DIFF = "All numbers are different";
+        String NEITHER = "Neither all are equal or different";
+        String EQUAL = "All numbers are equal";
+        
+        if (num1 < 0 || num2 < 0 || num3 < 0) {
+            System.out.println(INVALID);
+        } else {
+            long count = List.of(num1, num2, num3).stream().distinct().count();
+            System.out.println(count==3 ? DIFF : (count==2 ? NEITHER : EQUAL));
+        }
+    }
+}
+
+
+// Alternative solution using IntStream.of() with distinct and count to avoid duplication
+import java.util.stream.IntStream;
+
+public class IntEqualityPrinter {
+    public static void printEqual(int num1, int num2, int num3) {
+        String INVALID = "Invalid Value";
+        String DIFF = "All numbers are different";
+        String NEITHER = "Neither all are equal or different";
+        String EQUAL = "All numbers are equal";
+        
+        if (num1 < 0 || num2 < 0 || num3 < 0) {
+            System.out.println(INVALID);
+        } else {
+            long count = IntStream.of(num1, num2, num3).distinct().count();
+            System.out.println(count==3 ? DIFF : (count==2 ? NEITHER : EQUAL));
+        }
+    }
+}
