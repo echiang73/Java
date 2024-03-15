@@ -13,10 +13,12 @@ public class Printer {
         this.duplex = duplex;
         this.pagesPrinted = 0;
     }
-    
+
     public int addToner(int tonerAmount) {
-        if (tonerAmount > 0 && tonerAmount <= 100 && tonerLevel + tonerAmount <= 100) {
-            return tonerLevel += tonerAmount;
+        if (tonerAmount > 0 && tonerAmount <= 100) {
+            if (tonerLevel + tonerAmount <= 100) {
+                return tonerLevel += tonerAmount;
+            }
         } 
         return -1;
     }
@@ -36,6 +38,15 @@ public class Printer {
         return pagesPrinted;
     }
 }
+
+
+// Alternative addToner() method by combining conditions with AND && operator
+    public int addToner(int tonerAmount) {
+        if (tonerAmount > 0 && tonerAmount <= 100 && tonerLevel + tonerAmount <= 100) {
+            return tonerLevel += tonerAmount;
+        } 
+        return -1;
+    }
 
 
 // Alternative solution using ternary operators
