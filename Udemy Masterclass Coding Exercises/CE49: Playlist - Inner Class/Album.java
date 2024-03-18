@@ -48,11 +48,9 @@ public class Album {
             songs = new ArrayList<Song>();
         }
         
-        private boolean add(Song songToAdd){
-            for (int i = 0; i < songs.size(); i++) {
-                if(songs.get(i).equals(songToAdd)){
-                    return false;
-                }
+        private boolean add(Song songToAdd) {
+            if (songs.contains(songToAdd)) {
+                return false;
             }
             songs.add(songToAdd);
             return true;
@@ -67,13 +65,10 @@ public class Album {
             return null;
         }
         
-        private Song findSong(int trackNumber) {
+        private Song findSong(int trackNumber){
             int index = trackNumber-1;
-            for (int i = 0; i < songs.size(); i++) {
-                Song song = songs.get(i);
-                if (index <= songs.size() && song.equals(songs.get(index))) {
-                    return song;
-                }
+            if (index >= 0 && index <= songs.size()) {
+                return songs.get(index);
             }
             return null;
         }
