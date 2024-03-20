@@ -166,3 +166,13 @@ public class Album {
         }
 
 
+// Alternative findSong() method use loop to check if equals instead of contains
+        private Song findSong(int trackNumber){
+            int index = trackNumber-1;
+            for (Song song: songs) {
+                if (index <= songs.size() && song.equals(songs.get(index))) {
+                    return song;
+                }
+            }
+            return null;
+        }
