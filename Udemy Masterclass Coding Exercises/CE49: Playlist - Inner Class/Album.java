@@ -154,7 +154,7 @@ public class Album {
 }
 
 
-// Alternative add() method, use loop to check if equals instead of contains
+// Alternative inner class add() method, use loop to check if equals instead of contains
         private boolean add(Song songToAdd) {
             for (Song song: songs) {
                 if (song.equals(songToAdd)) {
@@ -166,7 +166,7 @@ public class Album {
         }
 
 
-// Alternative findSong() method use loop to check if equals instead of contains
+// Alternative inner class findSong() method use loop to check if equals instead of contains
         private Song findSong(int trackNumber){
             int index = trackNumber-1;
             for (Song song: songs) {
