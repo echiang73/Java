@@ -118,7 +118,7 @@ public class Album {
         return false;
     }
 
-    
+
     public static class SongList {
         private ArrayList<Song> songs;
         
@@ -152,3 +152,17 @@ public class Album {
         }
     }
 }
+
+
+// Alternative add() method, use loop to check if equals instead of contains
+        private boolean add(Song songToAdd) {
+            for (Song song: songs) {
+                if (song.equals(songToAdd)) {
+                    return false;
+                }
+            }
+            songs.add(songToAdd);
+            return true;
+        }
+
+
