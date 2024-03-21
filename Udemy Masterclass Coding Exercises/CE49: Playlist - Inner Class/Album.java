@@ -154,6 +154,12 @@ public class Album {
 }
 
 
+// Alternative addSong() method using single line return statement
+    public boolean addSong(String title, double duration ) {
+        return songs.add(new Song(title, duration));
+    }
+
+
 // Alternative inner class add() method, use loop to check if equals instead of contains
         private boolean add(Song songToAdd) {
             for (Song song: songs) {
