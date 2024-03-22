@@ -172,6 +172,13 @@ public class Album {
     }
 
 
+// Alternative addToPlayList() method without println
+    public boolean addToPlayList(int trackNumber, LinkedList<Song> playlist) {
+        Song song = songs.findSong(trackNumber);
+        return song != null && playlist.add(song);
+    }
+
+
 // Alternative inner class add() method, use loop to check if equals instead of contains
         private boolean add(Song songToAdd) {
             for (Song song: songs) {
