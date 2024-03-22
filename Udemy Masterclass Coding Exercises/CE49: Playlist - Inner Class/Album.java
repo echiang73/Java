@@ -160,6 +160,18 @@ public class Album {
     }
 
 
+// Alternative addToPlayList() method using variable song set to findSong(int)
+    public boolean addToPlayList(int trackNumber, LinkedList<Song> playlist) {
+        Song song = songs.findSong(trackNumber);
+        if (song != null) {
+            playlist.add(song);
+            return true;
+        }
+        System.out.println("This album does not have a track " + trackNumber);
+        return false;
+    }
+
+
 // Alternative inner class add() method, use loop to check if equals instead of contains
         private boolean add(Song songToAdd) {
             for (Song song: songs) {
