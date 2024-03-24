@@ -192,6 +192,12 @@ public class Album {
     }
 
 
+// Alternative addToPlayList() method as single-line return statement
+    public boolean addToPlayList(String title, LinkedList<Song> playlist) {
+        return songs.findSong(title) != null && playlist.add(songs.findSong(title));
+    }
+
+
 // Alternative inner class add() method, use loop to check if equals instead of contains
         private boolean add(Song songToAdd) {
             for (Song song: songs) {
