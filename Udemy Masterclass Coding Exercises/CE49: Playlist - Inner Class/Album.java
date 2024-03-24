@@ -179,13 +179,13 @@ public class Album {
     }
 
 
-// Alternative method with no variable and as single line return statement
+// Alternative addToPlayList() method with no variable and as single line return statement
     public boolean addToPlayList(int trackNumber, LinkedList<Song> playlist) {
         return songs.findSong(trackNumber) != null && playlist.add(songs.findSong(trackNumber));
     }
 
 
-// Alternative method using overloaded findSong(String) without println
+// Alternative addToPlayList() method using overloaded findSong(String) without println
     public boolean addToPlayList(String title, LinkedList<Song> playlist) {
         Song song = songs.findSong(title);
         return song != null && playlist.add(song);
