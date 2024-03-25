@@ -63,6 +63,16 @@ public class DecimalComparator {
 }
 
 
+// Alternative solution using BigDecimal using .equals() and single-line return statement
+import java.math.BigDecimal;
+
+public class DecimalComparator {
+    public static boolean areEqualByThreeDecimalPlaces (double num1, double num2) {
+        return new BigDecimal("" + num1).setScale(3, BigDecimal.ROUND_DOWN).toString().equals(new BigDecimal("" + num2).setScale(3, BigDecimal.ROUND_DOWN).toString());
+    }
+}
+
+
 // Alternative solution using DecimalFormat
 import java.text.DecimalFormat;
 import java.math.RoundingMode;
