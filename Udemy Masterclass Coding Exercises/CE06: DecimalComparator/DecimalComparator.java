@@ -41,6 +41,16 @@ public class DecimalComparator {
 }
 
 
+// Alternative solution using BigDecimal using single-line return statement
+import java.math.BigDecimal;
+
+public class DecimalComparator {
+    public static boolean areEqualByThreeDecimalPlaces (double num1, double num2) {
+        return new BigDecimal("" + num1).setScale(3, BigDecimal.ROUND_DOWN).doubleValue() == new BigDecimal("" + num2).setScale(3, BigDecimal.ROUND_DOWN).doubleValue();
+    }
+}
+
+
 // Alternative solution using BigDecimal using .equals()
 import java.math.BigDecimal;
 
