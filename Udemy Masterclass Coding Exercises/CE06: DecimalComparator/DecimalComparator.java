@@ -41,7 +41,7 @@ public class DecimalComparator {
 }
 
 
-// Alternative solution using BigDecimal using single-line return statement
+// Alternative solution using BigDecimal as single-line return statement
 import java.math.BigDecimal;
 
 public class DecimalComparator {
@@ -51,7 +51,7 @@ public class DecimalComparator {
 }
 
 
-// Alternative solution using BigDecimal using .equals()
+// Alternative solution using BigDecimal with .equals()
 import java.math.BigDecimal;
 
 public class DecimalComparator {
@@ -63,7 +63,7 @@ public class DecimalComparator {
 }
 
 
-// Alternative solution using BigDecimal using .equals() and single-line return statement
+// Alternative solution using BigDecimal with .equals() as single-line return statement
 import java.math.BigDecimal;
 
 public class DecimalComparator {
