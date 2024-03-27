@@ -100,3 +100,21 @@ public class DecimalComparator {
         return sub1.equals(sub2);
     }
 }
+
+
+// Alternative solution using String manipulation with loop to compare substring
+public class DecimalComparator {
+    public static boolean areEqualByThreeDecimalPlaces(double num1, double num2) {
+        String str1 = "" + num1;
+        String str2 = "" + num2;
+        int decimalIndex1 = str1.indexOf(".");
+        int decimalIndex2 = str2.indexOf(".");
+        int stop = Math.min(decimalIndex1 + Math.min(str1.length()-decimalIndex1, 4), decimalIndex2 + Math.min(str2.length()-decimalIndex2, 4));
+        for (int i = 0; i < stop; i++) {
+            if (!str1.substring(i, i+1).equals(str2.substring(i, i+1))) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
