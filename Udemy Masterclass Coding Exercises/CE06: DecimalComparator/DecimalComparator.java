@@ -86,3 +86,17 @@ public class DecimalComparator {
         return df1.format(num1).equals(df2.format(num2));
     }
 }
+
+
+// Alternative solution using String manipulation with substring
+public class DecimalComparator {
+    public static boolean areEqualByThreeDecimalPlaces(double num1, double num2) {
+        String str1 = "" + num1;
+        String str2 = "" + num2;
+        int decimalIndex1 = str1.indexOf(".");
+        int decimalIndex2 = str2.indexOf(".");
+        String sub1 = str1.substring(0, decimalIndex1 + Math.min(str1.length()-decimalIndex1, 4));
+        String sub2 = str2.substring(0, decimalIndex2 + Math.min(str2.length()-decimalIndex2, 4));
+        return sub1.equals(sub2);
+    }
+}
