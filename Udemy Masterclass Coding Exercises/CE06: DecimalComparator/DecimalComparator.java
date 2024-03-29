@@ -51,7 +51,7 @@ public class DecimalComparator {
 }
 
 
-// Alternative solution using BigDecimal with .equals() and Round DOWN toward 0
+// Alternative solution using BigDecimal with .equals()
 import java.math.BigDecimal;
 
 public class DecimalComparator {
@@ -73,7 +73,7 @@ public class DecimalComparator {
 }
 
 
-// Alternative solution using DecimalFormat
+// Alternative solution using DecimalFormat with ternary operators for FLOOR and CEILING
 import java.text.DecimalFormat;
 import java.math.RoundingMode;
 
