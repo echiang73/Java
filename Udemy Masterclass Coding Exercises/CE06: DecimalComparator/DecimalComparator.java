@@ -27,7 +27,7 @@ public class DecimalComparator {
 }
 
 
-// Alternative solution using BigDecimal
+// Alternative solution using BigDecimal and Round DOWN toward 0
 import java.math.BigDecimal;
 
 public class DecimalComparator {
