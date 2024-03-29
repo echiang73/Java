@@ -51,7 +51,7 @@ public class DecimalComparator {
 }
 
 
-// Alternative solution using BigDecimal with .equals()
+// Alternative solution using BigDecimal with .equals() and Round DOWN toward 0
 import java.math.BigDecimal;
 
 public class DecimalComparator {
@@ -83,6 +83,21 @@ public class DecimalComparator {
         DecimalFormat df2 = new DecimalFormat("###.###");
         df1.setRoundingMode(num1 > 0 ? RoundingMode.FLOOR : RoundingMode.CEILING);
         df2.setRoundingMode(num2 > 0 ? RoundingMode.FLOOR : RoundingMode.CEILING);
+        return df1.format(num1).equals(df2.format(num2));
+    }
+}
+
+
+// Alternative solution using DecimalFormat and Round DOWN toward 0
+import java.text.DecimalFormat;
+import java.math.RoundingMode;
+
+public class DecimalComparator {
+    public static boolean areEqualByThreeDecimalPlaces(double num1, double num2) {
+        DecimalFormat df1 = new DecimalFormat("###.###");
+        DecimalFormat df2 = new DecimalFormat("###.###");
+        df1.setRoundingMode(RoundingMode.DOWN);
+        df2.setRoundingMode(RoundingMode.DOWN);
         return df1.format(num1).equals(df2.format(num2));
     }
 }
