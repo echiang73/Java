@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Main {
     private Map<Integer, Location> locations = new HashMap<Integer, Location>();
+    private Map<String, String> vocabulary = new HashMap<String, String>();
     
     public Main() {
         locations.put(0, new Location(0, "You are sitting in front of a computer learning Java"));
@@ -31,9 +32,46 @@ public class Main {
 
         locations.get(5).addExit("S", 1);
         locations.get(5).addExit("W", 2);
+        
+        vocabulary.put("NORTH", "N");
+        vocabulary.put("SOUTH", "S");
+        vocabulary.put("EAST", "E");
+        vocabulary.put("WEST", "W");
+        vocabulary.put("QUIT", "Q");
     }
     
     public void command() {
-        // write code here
+        Scanner scanner = new Scanner(System.in);
+        int currLocation = 1;
+        while(true) {
+            System.out.println(locations.get(currLocation).getDescription());
+            if(currLocation == 0) {
+                break;
+            }
+            Map<String, Integer> currExits = locations.get(currLocation).getExits();
+
+            String exits = "";
+            for(String exit: currExits.keySet()) {
+                exits += exit + ", ";
+            }
+            System.out.println("Available exits are " + exits);
+           
+            String direction = scanner.nextLine().toUpperCase();
+            if (direction.length() > 1) {
+                String[] inputs = direction.split(" ");
+                for(String input: inputs) {
+                    if(vocabulary.containsKey(input)) {
+                        direction = vocabulary.get(input);
+                        break;
+                    }
+                }
+            }
+           
+            if (currExits.containsKey(direction)) {
+                currLocation = currExits.get(direction);
+            } else {
+                System.out.println("You cannot go in that direction");
+            }
+        }
     }
 }
