@@ -83,3 +83,18 @@ public class Main {
                 System.out.print(exit + ", ");
             }
             System.out.println();
+
+
+// Alternative code using functional programming stream (won't pass Udemy checker with extra lambda method):
+            String direction = scanner.nextLine().toUpperCase();
+            if (direction.length() > 1) {
+                // String[] inputs = direction.split(" ");
+                // for(String input: inputs) {
+                //     if(vocabulary.containsKey(input)) {
+                //         direction = vocabulary.get(input);
+                //         break;
+                //     }
+                // }
+ 
+                direction = List.of(direction.split(" ")).stream().filter(i -> vocabulary.containsKey(i)).findFirst().get();
+           }
