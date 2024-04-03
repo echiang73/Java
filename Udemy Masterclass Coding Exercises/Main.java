@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main {
     private Map<Integer, Location> locations = new HashMap<Integer, Location>();
     private Map<String, String> vocabulary = new HashMap<String, String>();
-    
+
     public Main() {
         locations.put(0, new Location(0, "You are sitting in front of a computer learning Java"));
         locations.put(1, new Location(1, "You are standing at the end of a road before a small brick building"));
@@ -75,3 +75,11 @@ public class Main {
         }
     }
 }
+
+
+// Alternative code to print each exit per iteration of the loop instead of using concatenation:            
+            System.out.print("Available exits are ");
+            for(String exit: currExits.keySet()) {
+                System.out.print(exit + ", ");
+            }
+            System.out.println();
