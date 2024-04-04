@@ -86,12 +86,18 @@ public class Card {
 
     public static void printDeck(List<Card> deck, String description, int rows) {
         System.out.println("-".repeat(6) + description + "-".repeat(6));
-        int cardsInRow = deck.size() / rows;
-        for (int i = 0; i < rows; i++) {
-            int startIndex = i * cardsInRow;
-            int endIndex = startIndex + cardsInRow;
-            deck.subList(startIndex, endIndex).forEach(c -> System.out.print(c + " "));
+        int minRowLength = deck.size() / rows;
+        int maxRowLength = (int) Math.ceil(deck.size() / (double) rows);
+        int cardsInLastColumn = minRowLength == maxRowLength ? 0 : (deck.size() - (rows*minRowLength)); 
+        for (int i = 0; i < Math.min(rows, deck.size()); i++) {
+            int currentRowLength = cardsInLastColumn != 0 ? maxRowLength : minRowLength;
+            int startIndex = i * currentRowLength;
+            int endIndex = Math.min(startIndex + currentRowLength, deck.size());
+            deck.subList(startIndex, endIndex).forEach(c -> System.out.print((c.face.length() == 1 ? " " : "") + c + " "));
             System.out.println();
+            if (cardsInLastColumn != 0) {
+                cardsInLastColumn--;
+            }
         }
         System.out.println("-".repeat(43));
     }
