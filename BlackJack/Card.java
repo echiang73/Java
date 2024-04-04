@@ -87,19 +87,15 @@ public class Card {
     public static void printDeck(List<Card> deck, String description, int rows) {
         System.out.println("-".repeat(10) + description + "-".repeat(10));
         int minRowLength = deck.size() / rows;
-        int maxRowLength = (int) Math.ceil(deck.size() / (double) rows);
-        int cardsInLastColumn = minRowLength == maxRowLength ? 0 : (deck.size() - (rows*minRowLength)); 
-        for (int i = 0; i < Math.min(rows, deck.size()); i++) {
-            int currentRowLength = cardsInLastColumn != 0 ? maxRowLength : minRowLength;
-            int startIndex = i * currentRowLength;
+        int cardsInLastColumn = deck.size() % rows;
+        int startIndex = 0;
+        for (int i = 1; i <= Math.min(rows, deck.size()); i++) {
+            int currentRowLength = minRowLength + (i <= cardsInLastColumn ? 1 : 0);
             int endIndex = Math.min(startIndex + currentRowLength, deck.size());
             deck.subList(startIndex, endIndex).forEach(c -> System.out.print((c.face.length() == 1 ? " " : "") + c + " "));
             System.out.println();
-            if (cardsInLastColumn != 0) {
-                cardsInLastColumn--;
-            }
+            startIndex = endIndex;
         }
         System.out.println("-".repeat(51));
     }
-
 }
