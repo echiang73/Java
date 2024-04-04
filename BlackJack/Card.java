@@ -85,7 +85,7 @@ public class Card {
     }
 
     public static void printDeck(List<Card> deck, String description, int rows) {
-        System.out.println("-".repeat(6) + description + "-".repeat(6));
+        System.out.println("-".repeat(10) + description + "-".repeat(10));
         int minRowLength = deck.size() / rows;
         int maxRowLength = (int) Math.ceil(deck.size() / (double) rows);
         int cardsInLastColumn = minRowLength == maxRowLength ? 0 : (deck.size() - (rows*minRowLength)); 
@@ -99,7 +99,7 @@ public class Card {
                 cardsInLastColumn--;
             }
         }
-        System.out.println("-".repeat(43));
+        System.out.println("-".repeat(51));
     }
 
 }
