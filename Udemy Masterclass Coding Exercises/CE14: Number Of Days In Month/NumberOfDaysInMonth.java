@@ -140,3 +140,23 @@ public class NumberOfDaysInMonth {
             };
     }
 }
+
+
+// Alternative solution using modulo, since 31 days for odd months 1, 3, 5, 7 unless after 7 then even months 8, 10, 12.
+// Use 31 - (0 or 1), to get 31 or 30 days. Thus, ((month - 1) % 7) % 2 will evaluate 0 or 1 to subtract from 31.
+public class NumberOfDaysInMonth {
+    public static boolean isLeapYear(int year){
+        return year >= 1 && year <= 9999 && (year%4 == 0 && year%100 != 0 || year%400 == 0);
+    }
+    
+    public static int getDaysInMonth(int month, int year) {
+        if (month < 1 || month > 12 || year < 1 || year > 9999) {
+            return -1;
+        }
+        
+        if (month == 2) {
+            return isLeapYear(year) ? 29 : 28;
+        }
+        return 31 - ((month - 1) % 7) % 2;
+    }
+}
