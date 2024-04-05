@@ -160,3 +160,19 @@ public class NumberOfDaysInMonth {
         return 31 - ((month - 1) % 7) % 2;
     }
 }
+
+
+// Alternative solution using modulo with nested ternary operators to subtract 0, 1, 2, 3 days from 31
+public class NumberOfDaysInMonth {
+    public static boolean isLeapYear(int year){
+        return year >= 1 && year <= 9999 && (year%4 == 0 && year%100 != 0 || year%400 == 0);
+    }
+    
+    public static int getDaysInMonth(int month, int year) {
+        if (month < 1 || month > 12 || year < 1 || year > 9999) {
+            return -1;
+        }
+        // return month == 2 ? (isLeapYear(year) ? 29 : 28) : 31 - ((month - 1) % 7) % 2;
+        return 31 - (((month - 1) % 7) % 2) - (month == 2 ? (isLeapYear(year) ? 1 : 2) : 0);
+    }
+}
