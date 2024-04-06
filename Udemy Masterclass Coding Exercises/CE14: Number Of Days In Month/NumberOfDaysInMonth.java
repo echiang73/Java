@@ -176,3 +176,23 @@ public class NumberOfDaysInMonth {
         return 31 - (((month - 1) % 7) % 2) - (month == 2 ? (isLeapYear(year) ? 1 : 2) : 0);
     }
 }
+
+
+// Alternative solution using imported Calendar
+import java.util.Calendar;
+
+public class NumberOfDaysInMonth {
+    public static boolean isLeapYear(int year){
+        return year >= 1 && year <= 9999 && (year%4 == 0 && year%100 != 0 || year%400 == 0);
+    }
+    
+    public static int getDaysInMonth(int month, int year) {
+        if (month < 1 || month > 12 || year < 1 || year > 9999) {
+            return -1;
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month - 1);
+        return cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+    }
+}
