@@ -214,3 +214,17 @@ public class NumberOfDaysInMonth {
         return YearMonth.of(year, month).lengthOfMonth();
     }
 }
+
+
+// Alternative solution using imported YearMonth with ternary operator
+import java.time.YearMonth;
+
+public class NumberOfDaysInMonth {
+    public static boolean isLeapYear(int year){
+        return year >= 1 && year <= 9999 && (year%4 == 0 && year%100 != 0 || year%400 == 0);
+    }
+    
+    public static int getDaysInMonth(int month, int year) {
+        return (month < 1 || month > 12 || year < 1 || year > 9999) ? -1 : YearMonth.of(year, month).lengthOfMonth();
+    }
+}
