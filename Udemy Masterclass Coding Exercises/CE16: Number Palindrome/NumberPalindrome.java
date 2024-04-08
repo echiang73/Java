@@ -24,11 +24,24 @@ public class NumberPalindrome {
 }
 
 
-// Alternative solution using String and loop to match char
+// Alternative solution using String manipulation and loop in reverse direction: 
 public class NumberPalindrome {
     public static boolean isPalindrome(int number) {
         // String numStr = Integer.toString(Math.abs(number));
         String numStr = "" + Math.abs(number); // easier hack 
+        String revStr = "";
+        for(int i = (numStr.length() - 1); i >= 0; i--) {
+            revStr += numStr.charAt(i);
+        }
+        return numStr.equals(revStr);
+    }
+}
+
+
+// Alternative solution using String and loop to match char
+public class NumberPalindrome {
+    public static boolean isPalindrome(int number) {
+        String numStr = "" + Math.abs(number);
         for (int i = 0; i <= (numStr.length()-1)/2; i++) {
             char start = numStr.charAt(i);
             char end = numStr.charAt(numStr.length()-1-i);
