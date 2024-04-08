@@ -24,6 +24,22 @@ public class NumberPalindrome {
 }
 
 
+// Alternative solution using String and loop to match char
+public class NumberPalindrome {
+    public static boolean isPalindrome(int number) {
+        String str = "" + Math.abs(number); // or Integer.toString(Math.abs(number));
+        for (int i = 0; i <= (str.length()-1)/2; i++) {
+            char start = str.charAt(i);
+            char end = str.charAt(str.length()-1-i);
+            if (start != end) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
 // Alternative solution using built-in .reverse() in StringBuilder (or StringBuffer) class
 public class NumberPalindrome {
     public static boolean isPalindrome(int number) {
@@ -53,3 +69,5 @@ public class NumberPalindrome {
         return numSb.compareTo(revSb) == 0; // 0 for true
     }
 }
+
+
