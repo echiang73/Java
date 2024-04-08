@@ -38,7 +38,7 @@ public class NumberPalindrome {
 }
 
 
-// Alternative solution using String and loop to match char
+// Alternative solution using String and loop to match char from ends
 public class NumberPalindrome {
     public static boolean isPalindrome(int number) {
         String numStr = "" + Math.abs(number);
