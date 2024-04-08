@@ -103,3 +103,11 @@ public class NumberPalindrome {
         return new StringBuilder("" + Math.abs(number)).compareTo(new StringBuilder("" + Math.abs(number)).reverse()) == 0;
     }
 }
+
+
+// Alternative solution using StringBuffer with compareTo() as single line return statement
+public class NumberPalindrome {
+    public static boolean isPalindrome(int number) {
+        return new StringBuffer("" + Math.abs(number)).compareTo(new StringBuffer("" + Math.abs(number)).reverse()) == 0;
+    }
+}
