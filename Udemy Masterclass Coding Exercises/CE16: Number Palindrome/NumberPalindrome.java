@@ -71,3 +71,9 @@ public class NumberPalindrome {
 }
 
 
+// Alternative solution using StringBuilder with compareTo() as single line return statement
+public class NumberPalindrome {
+    public static boolean isPalindrome(int number) {
+        return new StringBuilder("" + Math.abs(number)).compareTo(new StringBuilder("" + Math.abs(number)).reverse()) == 0;
+    }
+}
