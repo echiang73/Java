@@ -27,10 +27,11 @@ public class NumberPalindrome {
 // Alternative solution using String and loop to match char
 public class NumberPalindrome {
     public static boolean isPalindrome(int number) {
-        String str = "" + Math.abs(number); // or Integer.toString(Math.abs(number));
-        for (int i = 0; i <= (str.length()-1)/2; i++) {
-            char start = str.charAt(i);
-            char end = str.charAt(str.length()-1-i);
+        // String numStr = Integer.toString(Math.abs(number));
+        String numStr = "" + Math.abs(number); // easier hack 
+        for (int i = 0; i <= (numStr.length()-1)/2; i++) {
+            char start = numStr.charAt(i);
+            char end = numStr.charAt(numStr.length()-1-i);
             if (start != end) {
                 return false;
             }
@@ -40,12 +41,24 @@ public class NumberPalindrome {
 }
 
 
-// Alternative solution using built-in .reverse() in StringBuilder (or StringBuffer) class
+// Alternative solution using built-in .reverse() in StringBuilder class
 public class NumberPalindrome {
     public static boolean isPalindrome(int number) {
-        String numStr = "" + Math.abs(number); // or Integer.toString(Math.abs(number));
-        StringBuilder numSb = new StringBuilder(numStr); // or new StringBuffer(numStr);
+        String numStr = "" + Math.abs(number);
+        StringBuilder numSb = new StringBuilder(numStr);
         StringBuilder revSb = numSb.reverse();
+        String revStr = revSb.toString();
+        return numStr.equals(revStr);
+    }
+}
+
+
+// Alternative solution using built-in .reverse() in StringBuffer class (similar to StringBuilder)
+public class NumberPalindrome {
+    public static boolean isPalindrome(int number) {
+        String numStr = "" + Math.abs(number);
+        StringBuffer numSb = new StringBuffer(numStr);
+        StringBuffer revSb = numSb.reverse();
         String revStr = revSb.toString();
         return numStr.equals(revStr);
     }
