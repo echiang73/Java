@@ -49,7 +49,7 @@ public class EvenDigitSum {
 }
 
 
-// Alternative solution using String manipulation, chars(), and map() to sum
+// Alternative solution using String manipulation, chars(), and map() to sum (extra method won't pass Udemy checker)
 public class EvenDigitSum {
     public static int getEvenDigitSum(int number) {
         String numStr = String.valueOf(number);
@@ -59,7 +59,7 @@ public class EvenDigitSum {
 }
 
 
-// Alternative solution using String manipulation, chars(), and map() to sum with ternary operator
+// Alternative solution using String manipulation, chars(), and map() to sum with ternary operator (extra method won't pass Udemy checker)
 public class EvenDigitSum {
     public static int getEvenDigitSum(int number) {
         return number < 0 ? -1 : (""+number).chars().map(Character::getNumericValue).filter(c -> c%2 == 0).sum();
@@ -67,7 +67,7 @@ public class EvenDigitSum {
 }
 
 
-// Alternative solution using String manipulation with stream of String array to sum
+// Alternative solution using String manipulation with stream of String array to sum (extra method won't pass Udemy checker)
 import java.util.List;
  
 public class EvenDigitSum {
@@ -79,7 +79,7 @@ public class EvenDigitSum {
 }
 
 
-// Alternative solution using String manipulation with stream of String array to sum with ternary operator
+// Alternative solution using String manipulation with stream of String array to sum with ternary operator (extra method won't pass Udemy checker)
 import java.util.List;
  
 public class EvenDigitSum {
