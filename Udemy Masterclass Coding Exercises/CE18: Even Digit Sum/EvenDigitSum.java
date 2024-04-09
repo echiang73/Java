@@ -57,3 +57,11 @@ public class EvenDigitSum {
         return number < 0 ? -1 : sum;
     }
 }
+
+
+// Alternative solution using String manipulation, chars(), and map() to sum with ternary operator
+public class EvenDigitSum {
+    public static int getEvenDigitSum(int number) {
+        return number < 0 ? -1 : (""+number).chars().map(Character::getNumericValue).filter(c -> c%2 == 0).sum();
+    }
+}
