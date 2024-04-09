@@ -65,3 +65,18 @@ public class EvenDigitSum {
         return number < 0 ? -1 : (""+number).chars().map(Character::getNumericValue).filter(c -> c%2 == 0).sum();
     }
 }
+
+
+// Alternative solution using String manipulation with stream of String array to sum
+import java.util.List;
+ 
+public class EvenDigitSum {
+    public static int getEvenDigitSum(int number) {
+        String[] numStrArray = String.valueOf(number).split("");
+        int sum = List.of(numStrArray).stream().mapToInt(Integer::parseInt).filter(i -> i%2 == 0).sum();
+        return number < 0 ? -1 : sum;
+        
+        // return number < 0 ? -1 : List.of(("" + number).split("")).stream().mapToInt(Integer::parseInt).filter(i -> i%2 == 0).sum();
+    }
+}
+
