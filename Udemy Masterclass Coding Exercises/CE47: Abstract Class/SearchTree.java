@@ -14,7 +14,7 @@ public class SearchTree implements NodeList {
     @Override
     public boolean addItem(ListItem node) {
         // If the head of the tree is null, make the head refer to the item to be added.
-        if (root == null || node == null) {
+        if (root == null) {
             root = node;
             return true;
         }
