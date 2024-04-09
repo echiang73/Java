@@ -47,3 +47,13 @@ public class EvenDigitSum {
         return number < 0 ? -1 : nums.stream().mapToInt(Integer::intValue).sum();
     }
 }
+
+
+// Alternative solution using String manipulation, chars(), and map() to sum
+public class EvenDigitSum {
+    public static int getEvenDigitSum(int number) {
+        String numStr = String.valueOf(number);
+        int sum = numStr.chars().map(Character::getNumericValue).filter(c -> c%2 == 0).sum();
+        return number < 0 ? -1 : sum;
+    }
+}
