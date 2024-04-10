@@ -24,6 +24,9 @@ public class Node extends ListItem {
         return this.leftLink = leftLink;
     }
  
+    /* If this value is greater than the value that was passed in, then it
+    should return a number greater than zero. If vice versa, then it 
+    should return a number less than zero, and zero if equal. */
     @Override
     int compareTo(ListItem other) {
         int x = Integer.parseInt(String.valueOf(value));
