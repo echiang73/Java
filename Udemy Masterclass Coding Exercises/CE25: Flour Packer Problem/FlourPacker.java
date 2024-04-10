@@ -4,7 +4,8 @@ with nested loops, but this is not concise nor performant.  Alternative approach
 as recursion.  Understanding how each approach works will really solidify your Java fundamentals. */
 
 
-// Basic solution, using "brute force" with nested loops (not performant, quadratic time complexity)
+/* Basic solution, using "brute force" with nested loops (not performant, quadratic time complexity).
+Note that the nested loops will validate bigCount and smallCount. */
 public class FlourPacker {
     public static boolean canPack(int bigCount, int smallCount, int goal) {
         if (goal < 0) {
@@ -22,7 +23,9 @@ public class FlourPacker {
 }
 
 
-// Alternative solution using linear time complexity with 2 separate while loops
+/* Alternative solution using linear time complexity with 2 separate while loops.  This approach
+subtracts 5 from goal for each bigCount and subtracts 1 for each smallCount.  If the remaining
+goal is 0, then return true. */
 public class FlourPacker {
     public static boolean canPack(int bigCount, int smallCount, int goal) {
         if (goal < 0) {
@@ -44,7 +47,8 @@ public class FlourPacker {
 }
 
 
-// Alternative solution without while loop for smallCount and use direct comparison of "remaining" goal with smallCount
+/* Alternative solution without while loop for smallCount and use direct comparison of "remaining" goal
+with smallCount, since smallCount is 1 bag of flour. */
 public class FlourPacker {
     public static boolean canPack(int bigCount, int smallCount, int goal) {
         if (goal < 0) {
@@ -61,7 +65,9 @@ public class FlourPacker {
 }
 
 
-// Alternative solution without loops, using modulo to get "remaining" goal (constant time complexity)
+/* Alternative solution without loops, using modulo to get "remaining" goal (constant time complexity).
+Note, this approach will require a validation of supply vs demand first before using modulo %5 to get
+the remaining goal to compare to smallCount. */
 public class FlourPacker {
     public static boolean canPack(int bigCount, int smallCount, int goal) {
         if (goal >= 0) {
@@ -95,7 +101,8 @@ public class FlourPacker {
 }
 
 
-// Alternative solution using Math.min()
+/* Alternative solution using Math.min() to determine how much bigCount if all or just some will actually be used,
+and similarly for smallCount if all or some will actually be used. */
 public class FlourPacker {
     public static boolean canPack(int bigCount, int smallCount, int goal) {
         if (goal >= 0) {
