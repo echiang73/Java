@@ -45,6 +45,19 @@ public class Person {
 }
 
 
+// Alternative getFullName() method evaluating empty first to be more concise
+    public String getFullName() {
+        if (firstName.isEmpty() && lastName.isEmpty()) {
+            return "";
+        } else if (firstName.isEmpty()) {
+            return lastName;
+        } else if (lastName.isEmpty()) {
+            return firstName;
+        }
+        return firstName + " " + lastName;
+    }
+
+
 // Alternative getFullName() method using String.format()
     public String getFullName() {
         if (firstName.isEmpty() && !lastName.isEmpty()) {
