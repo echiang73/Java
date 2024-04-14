@@ -112,3 +112,14 @@ public class FirstLastDigitSum {
         return number < 0 ? -1 : first + last;
     }
 }
+
+
+// Alternative solution using String and charAt with .getNumericValue() without the -48 offset
+public class FirstLastDigitSum {
+    public static int sumFirstAndLastDigit(int number) {
+        String str = ("" + number);
+        int first = Character.getNumericValue(str.charAt(0));
+        int last = Character.getNumericValue(str.charAt(str.length()-1));
+        return number < 0 ? -1 : first + last;
+    }
+}
