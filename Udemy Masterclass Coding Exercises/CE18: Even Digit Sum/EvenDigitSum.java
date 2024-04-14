@@ -99,3 +99,20 @@ public class EvenDigitSum {
         return number < 0 ? -1 : sum;
     }
 }
+
+
+// Alternative solution using recursion
+public class EvenDigitSum {
+    public static int getEvenDigitSum(int number) {
+        if (number < 0) return -1;
+        if (number == 0) return number; // break out of recursioon
+        
+        if (number%2 == 0) { // if even, add last digit and make recursive call with next digit
+            return number%10 + getEvenDigitSum(number/10);
+        } else {
+            return getEvenDigitSum(number/10); // if not even, just make recursive call with next digit
+        }
+        
+        // return number < 0 ? -1 : (number == 0 ? number : (number%2 == 0 ? number%10 : 0) + getEvenDigitSum(number/10));
+    }
+}
