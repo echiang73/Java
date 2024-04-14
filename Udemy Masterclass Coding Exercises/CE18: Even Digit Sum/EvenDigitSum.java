@@ -116,3 +116,11 @@ public class EvenDigitSum {
         // return number < 0 ? -1 : (number == 0 ? number : (number%2 == 0 ? number%10 : 0) + getEvenDigitSum(number/10));
     }
 }
+
+
+// Alternative solution using recursion and ternary operator
+public class EvenDigitSum {
+    public static int getEvenDigitSum(int number) {
+        return number < 0 ? -1 : (number == 0 ? number : (number%2 == 0 ? number%10 : 0) + getEvenDigitSum(number/10));
+    }
+}
