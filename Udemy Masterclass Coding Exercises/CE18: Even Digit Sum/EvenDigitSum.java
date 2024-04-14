@@ -87,3 +87,15 @@ public class EvenDigitSum {
         return number < 0 ? -1 : List.of(("" + number).split("")).stream().mapToInt(Integer::parseInt).filter(i -> i%2 == 0).sum();
     }
 }
+
+
+// Alternative solution using String manipulation with Arrays.stream to sum (extra method won't pass Udemy checker)
+import java.util.Arrays;
+ 
+public class EvenDigitSum {
+    public static int getEvenDigitSum(int number) {
+        String[] numStrArray = String.valueOf(number).split("");
+        int sum = Arrays.stream(numStrArray).mapToInt(Integer::parseInt).filter(i -> i%2 == 0).sum();
+        return number < 0 ? -1 : sum;
+    }
+}
