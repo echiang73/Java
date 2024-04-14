@@ -112,8 +112,6 @@ public class EvenDigitSum {
         } else {
             return getEvenDigitSum(number/10); // if not even, just make recursive call with next digit
         }
-        
-        // return number < 0 ? -1 : (number == 0 ? number : (number%2 == 0 ? number%10 : 0) + getEvenDigitSum(number/10));
     }
 }
 
