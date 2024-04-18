@@ -13,9 +13,12 @@ public class Poker {
     ListIterator<Card> cards;
     String playerInput;
     double winPercent = 0;
+    boolean spyVisionOn;
 
     public void startGame() {
         System.out.println("\nWelcome to the Java Poker Table");
+
+        checkSpyVision();
 
         playerInput = promptUserInput();
 
@@ -52,8 +55,31 @@ public class Poker {
         }
     }
 
+    private void checkSpyVision() {
+        String spyVisionInput = promptIputForSpyVision();
+        while(true) {
+            if ("Y".equals(spyVisionInput)) {
+                spyVisionOn = true;
+                break;
+            } else if ("N".equals(spyVisionInput)) {
+                spyVisionOn = false;
+                break;
+            } else {
+                System.out.println("Invalid entry, enter Y or N");
+                spyVisionInput = scanner.nextLine().toUpperCase();
+            }
+        }
+    }
+
+    private String promptIputForSpyVision() {
+        System.out.println("Before we start, would you like to put on Spy Vision sunglasses to see deck cards?");
+        System.out.println("Y -> Yes\nN -> No");
+        return scanner.nextLine().toUpperCase();
+    }
+
     private void pokerGame() {
         initGame();
+
     }
 
     private void initGame() {
@@ -70,9 +96,9 @@ public class Poker {
     private List<Card> getNewDeck() {
         List<Card> newDeck = Card.getStandardDeck();
         Collections.shuffle(newDeck);
-        // if (spyVisionOn) {
-        //     Card.printDeck(newDeck);
-        // }
+        if (spyVisionOn) {
+            Card.printDeck(newDeck);
+        }
         return newDeck;
     }
 
