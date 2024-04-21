@@ -79,13 +79,6 @@ public class Card {
         return deck;
     }
 
-    public static List<Card> getDoubleDeck() {
-        List<Card> deck = new ArrayList<>(104);
-        deck.addAll(getStandardDeck());
-        deck.addAll(getStandardDeck());
-        return deck;
-    }
-
     public static void printDeck(List<Card> deck) {
         printDeck(deck, "Spy Vision - Current Deck Order", 4);
     }

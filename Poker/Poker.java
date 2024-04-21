@@ -94,8 +94,7 @@ public class Poker {
     }
 
     private List<Card> getNewDeck() {
-        // List<Card> newDeck = Card.getStandardDeck();
-        List<Card> newDeck = Card.getDoubleDeck();
+        List<Card> newDeck = Card.getStandardDeck();
         Collections.shuffle(newDeck);
         if (spyVisionOn) {
             Card.printDeck(newDeck);
