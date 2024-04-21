@@ -16,7 +16,7 @@ public class Poker {
     boolean spyVisionOn;
 
     public void startGame() {
-        System.out.println("\nWelcome to the Java Poker Table");
+        System.out.println("\nWelcome to the Java Texas Hold'em Poker Table");
 
         checkSpyVision();
 
