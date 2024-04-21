@@ -81,22 +81,8 @@ public class Card {
 
     public static List<Card> getDoubleDeck() {
         List<Card> deck = new ArrayList<>(104);
-        for (Suit suit : Suit.values()) {
-            for (int i = 2; i <= 10; i++) {
-                deck.add(getNumericCard(suit, i));
-            }
-            for (char c : new char[]{'J', 'Q', 'K', 'A'}) {
-                deck.add(getFaceCard(suit, c));
-            }
-        }
-        for (Suit suit : Suit.values()) {
-            for (int i = 2; i <= 10; i++) {
-                deck.add(getNumericCard(suit, i));
-            }
-            for (char c : new char[]{'J', 'Q', 'K', 'A'}) {
-                deck.add(getFaceCard(suit, c));
-            }
-        }
+        deck.addAll(getStandardDeck());
+        deck.addAll(getStandardDeck());
         return deck;
     }
 
