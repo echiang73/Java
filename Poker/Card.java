@@ -50,7 +50,6 @@ public class Card {
     }
 
     public static Card getNumericCard(Suit suit, int cardNumber) {
-
         if (cardNumber > 1 && cardNumber < 11) {
             return new Card(suit, String.valueOf(cardNumber), cardNumber - 2);
         }
@@ -58,8 +57,7 @@ public class Card {
         return null;
     }
 
-    public static Card getFaceCard(Suit suit, char abbrev) {
-
+    public static Card getFaceCard(Suit suit, char abbrev) 
         int charIndex = "JQKA".indexOf(abbrev);
         if (charIndex > -1) {
             return new Card(suit, "" + abbrev, charIndex + 9);
@@ -69,7 +67,19 @@ public class Card {
     }
 
     public static List<Card> getStandardDeck() {
+        List<Card> deck = new ArrayList<>(52);
+        for (Suit suit : Suit.values()) {
+            for (int i = 2; i <= 10; i++) {
+                deck.add(getNumericCard(suit, i));
+            }
+            for (char c : new char[]{'J', 'Q', 'K', 'A'}) {
+                deck.add(getFaceCard(suit, c));
+            }
+        }
+        return deck;
+    }
 
+    public static List<Card> getDoubleDeck() {
         List<Card> deck = new ArrayList<>(52);
         for (Suit suit : Suit.values()) {
             for (int i = 2; i <= 10; i++) {
