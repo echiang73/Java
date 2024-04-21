@@ -16,7 +16,7 @@ public class Poker {
     boolean spyVisionOn;
 
     public void startGame() {
-        System.out.println("\nWelcome to the Java Texas Hold'em Poker Table");
+        System.out.println("\nWelcome to the Java Texas Hold'em Poker");
 
         checkSpyVision();
 
@@ -28,7 +28,7 @@ public class Poker {
                 playerInput = promptUserInput();
             } else if ("Q".equals(playerInput)) {
                 printWinPercentageMessage();
-                System.out.println("Thanks for playing Java Poker, goodbye!");
+                System.out.println("Thanks for playing Java Texas Hold'em Poker, goodbye!");
                 scanner.close();
                 break;
             } else {
