@@ -14,6 +14,7 @@ public class Poker {
     List<Card> opponent1Hand = new ArrayList<>();
     List<Card> opponent2Hand = new ArrayList<>();
     List<Card> opponent3Hand = new ArrayList<>();
+    List<Card> dealerFlopHand = new ArrayList<>();
     ListIterator<Card> cards;
     String playerInput;
     double winPercent = 0;
@@ -119,12 +120,19 @@ public class Poker {
         opponent1Hand.add(getCard());
         opponent2Hand.add(getCard());
         opponent3Hand.add(getCard());
+        dealFlop();
 
         playerTotal = assessHandTotal(playerHand);
         opponent1Total = assessHandTotal(opponent1Hand);
         opponent2Total = assessHandTotal(opponent1Hand);
         opponent3Total = assessHandTotal(opponent1Hand);
         printInitialHands();
+    }
+
+    private void dealFlop() {
+        dealerFlopHand.add(getCard());
+        dealerFlopHand.add(getCard());
+        dealerFlopHand.add(getCard());
     }
 
     private Card getCard() {
@@ -182,11 +190,11 @@ public class Poker {
             System.out.println("Opponent2 hand: [" + opponent2Hand.get(0) + ", " + opponent2Hand.get(1) + "]"); 
             System.out.println("Opponent3 hand: [" + opponent3Hand.get(0) + ", " + opponent3Hand.get(1) + "]"); 
         }
- 
+        System.out.println("Flop: " + dealerFlopHand);
     }
 
-    private int getCardValue(Card card) {
-        return card.face().equals("A") ? 11 : ((Arrays.asList("K", "Q", "J")).contains(card.face()) ? 10 : Integer.parseInt(card.face()));
-    }
+    // private int getCardValue(Card card) {
+    //     return card.face().equals("A") ? 11 : ((Arrays.asList("K", "Q", "J")).contains(card.face()) ? 10 : Integer.parseInt(card.face()));
+    // }
 
 }
