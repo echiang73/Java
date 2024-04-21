@@ -76,7 +76,7 @@ public class Poker {
     }
 
     private String promptIputForSpyVision() {
-        System.out.println("Before we start, would you like to put on Spy Vision sunglasses to see deck cards?");
+        System.out.println("Before we start, would you like to put on Spy Vision sunglasses to see deck cards and opponents' cards?");
         System.out.println("Y -> Yes\nN -> No");
         return scanner.nextLine().toUpperCase();
     }
@@ -98,7 +98,7 @@ public class Poker {
         opponent2Hand.clear();
         opponent3Hand.clear();
         
-        // dealCardsEach();
+        dealTwoCardsEach();
     }
 
     private List<Card> getNewDeck() {
@@ -108,6 +108,85 @@ public class Poker {
             Card.printDeck(newDeck);
         }
         return newDeck;
+    }
+
+    private void dealTwoCardsEach() {
+        playerHand.add(getCard());
+        opponent1Hand.add(getCard());
+        opponent2Hand.add(getCard());
+        opponent3Hand.add(getCard());
+        playerHand.add(getCard());
+        opponent1Hand.add(getCard());
+        opponent2Hand.add(getCard());
+        opponent3Hand.add(getCard());
+
+        playerTotal = assessHandTotal(playerHand);
+        opponent1Total = assessHandTotal(opponent1Hand);
+        opponent2Total = assessHandTotal(opponent1Hand);
+        opponent3Total = assessHandTotal(opponent1Hand);
+        printInitialHands();
+    }
+
+    private Card getCard() {
+        return cards.next();
+    }
+
+    private int assessHandTotal(List<Card> hand) {
+        int handValue = 0;
+        int numOfA = 0;
+        
+        for (Card card : hand) {
+            // add all non-A values first, but keep count of A's
+            try {
+                handValue += Integer.parseInt(card.face());
+            } catch (NumberFormatException e) {
+                switch (card.face()) {
+                    case "J": 
+                        case "Q": case "K": handValue += 10;
+                        break;
+                    case "A": 
+                        numOfA++;
+                }
+            }
+        }
+
+        // now calculate different combo of total value with A's
+        if (numOfA > 0) {
+            return calculateAces(numOfA, handValue);
+        }
+        return handValue;
+    }
+
+    private int calculateAces(int numOfA, int handValue) {
+        switch(numOfA) {
+            case 1: 
+                handValue += (handValue + 11 < 22) ? 11 : 1;
+                break;
+            case 2: 
+                handValue += (handValue + 12 < 22) ? 12 : 2;
+                break;
+            case 3: 
+                handValue += (handValue + 13 < 22) ? 13 : 3;
+                break;
+            case 4: 
+                handValue += (handValue + 14 < 22) ? 14 : 4;
+                break;
+        }
+        return handValue;
+    }
+
+    private void printInitialHands() {
+        System.out.println("Player hand: " + playerHand);
+        if (spyVisionOn) {
+            System.out.println("Opponent1 hand: [" + opponent1Hand.get(0) + ", " + opponent1Hand.get(1) + "]"); 
+            System.out.println("Opponent2 hand: [" + opponent2Hand.get(0) + ", " + opponent2Hand.get(1) + "]"); 
+            System.out.println("Opponent3 hand: [" + opponent3Hand.get(0) + ", " + opponent3Hand.get(1) + "]"); 
+        }
+ 
+    }
+
+    private int getCardValue(Card card) {
+        return card.face().equals("A") ? 11 : ((Arrays.asList("K", "Q", "J")).contains(card.face()) ? 10 : Integer.parseInt(card.face()));
     }
 
 }
