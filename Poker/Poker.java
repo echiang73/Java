@@ -6,10 +6,14 @@ public class Poker {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
     int playerTotal = 0;
-    int dealerTotal = 0;
+    int opponent1Total = 0;
+    int opponent2Total = 0;
+    int opponent3Total = 0;
     List<Card> deck;
     List<Card> playerHand = new ArrayList<>();
-    List<Card> dealerHand = new ArrayList<>();
+    List<Card> opponent1Hand = new ArrayList<>();
+    List<Card> opponent2Hand = new ArrayList<>();
+    List<Card> opponent3Hand = new ArrayList<>();
     ListIterator<Card> cards;
     String playerInput;
     double winPercent = 0;
@@ -86,9 +90,13 @@ public class Poker {
         deck = getNewDeck();
         cards = deck.listIterator();
         playerTotal = 0;
-        dealerTotal = 0;
+        opponent1Total = 0;
+        opponent2Total = 0;
+        opponent3Total = 0;
         playerHand.clear();
-        dealerHand.clear();
+        opponent1Hand.clear();
+        opponent2Hand.clear();
+        opponent3Hand.clear();
         
         // dealCardsEach();
     }
