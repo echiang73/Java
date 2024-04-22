@@ -153,7 +153,7 @@ public class Poker {
     }
 
     private void betBlind() {
-        BigBlind bigBlind = BigBlind.random();
+        BigBlind bigBlind = BigBlind.values()[new Random().nextInt(BigBlind.values().length)];
         System.out.println("BigBlind is " + bigBlind);
     }
 
