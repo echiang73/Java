@@ -1,6 +1,8 @@
 package Poker;
 
 import java.util.*;
+import java.math.BigDecimal; 
+import java.text.DecimalFormat; 
 
 public class Poker {
     Scanner scanner = new Scanner(System.in);
@@ -125,13 +127,19 @@ public class Poker {
                 opponent1Total = Integer.parseInt(chipAmount);
                 opponent2Total = Integer.parseInt(chipAmount);
                 opponent3Total = Integer.parseInt(chipAmount);
-                System.out.println("Everyone starts with $" + playerTotal + " in chips!");
+                System.out.println("Everyone starts with " + convertCurrrency(playerTotal) + " in chips!");
                 break;
             } catch (Exception ex) {
                 System.out.println("Invalid entry, please enter a number");
                 chipAmount = scanner.nextLine();
             }
         }
+    }
+
+    private String convertCurrrency(int amount) {
+        DecimalFormat formatter = new DecimalFormat("$#,##0"); 
+        BigDecimal amt = new BigDecimal("" + amount); 
+        return formatter.format(amt);  
     }
 
     private void dealTwoCardsEach() {
