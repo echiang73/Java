@@ -91,7 +91,7 @@ public class Card {
     }
 
     public static void printDeck(List<Card> deck, String description, int rows) {
-        System.out.println("-".repeat(10) + description + "-".repeat(10));
+        System.out.println("-".repeat(36) + description + "-".repeat(36));
         int minRowLength = deck.size() / rows;
         int cardsInLastColumn = deck.size() % rows;
         int startIndex = 0;
@@ -102,6 +102,6 @@ public class Card {
             System.out.println();
             startIndex = endIndex;
         }
-        System.out.println("-".repeat(51));
+        System.out.println("-".repeat(103));
     }
 }

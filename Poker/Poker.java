@@ -5,10 +5,10 @@ import java.util.*;
 public class Poker {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
-    // int playerTotal = 0;
-    // int opponent1Total = 0;
-    // int opponent2Total = 0;
-    // int opponent3Total = 0;
+    int playerTotal = 0;
+    int opponent1Total = 0;
+    int opponent2Total = 0;
+    int opponent3Total = 0;
     List<Card> deck;
     List<Card> playerHand = new ArrayList<>();
     List<Card> opponent1Hand = new ArrayList<>();
@@ -90,6 +90,9 @@ public class Poker {
     private void initGame() {
         deck = getNewDeck();
         cards = deck.listIterator();
+
+        askStartingChipAmount();
+
         // playerTotal = 0;
         // opponent1Total = 0;
         // opponent2Total = 0;
@@ -111,6 +114,24 @@ public class Poker {
             Card.printDeck(newDeck);
         }
         return newDeck;
+    }
+
+    private void askStartingChipAmount() {
+        System.out.print("How much chips would you like to start with? ");
+        String chipAmount = scanner.nextLine();
+        while(true) {
+            try {
+                playerTotal = Integer.parseInt(chipAmount);
+                opponent1Total = Integer.parseInt(chipAmount);
+                opponent2Total = Integer.parseInt(chipAmount);
+                opponent3Total = Integer.parseInt(chipAmount);
+                System.out.println("Everyone starts with $" + playerTotal + " in chips!");
+                break;
+            } catch (Exception ex) {
+                System.out.println("Invalid entry, please enter a number");
+                chipAmount = scanner.nextLine();
+            }
+        }
     }
 
     private void dealTwoCardsEach() {
