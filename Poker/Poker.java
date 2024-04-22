@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 public class Poker {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
+    String playerName;
     int playerTotal = 0;
     int opponent1Total = 0;
     int opponent2Total = 0;
@@ -24,9 +25,8 @@ public class Poker {
 
     public void startGame() {
         System.out.println("\nWelcome to the Java Texas Hold'em Poker");
-
+        playerName = promptPlayerName();
         checkSpyVision();
-
         playerInput = promptUserInput();
 
         while(true) {
@@ -35,7 +35,7 @@ public class Poker {
                 playerInput = promptUserInput();
             } else if ("Q".equals(playerInput)) {
                 printWinPercentageMessage();
-                System.out.println("Thanks for playing Java Texas Hold'em Poker, goodbye!");
+                System.out.println("Thanks for playing Java Texas Hold'em Poker, " + playerName + ". Goodbye!");
                 scanner.close();
                 break;
             } else {
@@ -44,6 +44,11 @@ public class Poker {
             }
 
         }
+    }
+
+    private String promptPlayerName() {
+        System.out.print("Please enter player name. ");
+        return scanner.nextLine();
     }
 
     private String promptUserInput() {
@@ -79,7 +84,7 @@ public class Poker {
     }
 
     private String promptIputForSpyVision() {
-        System.out.println("Before we start, would you like to put on Spy Vision sunglasses to see deck cards and opponents' cards?");
+        System.out.println(playerName + ", before we start, would you like to put on Spy Vision sunglasses to see deck cards and opponents' cards?");
         System.out.println("Y -> Yes\nN -> No");
         return scanner.nextLine().toUpperCase();
     }
@@ -139,7 +144,7 @@ public class Poker {
     }
 
     private void printChipStatus() {        
-        System.out.println("Player: " + convertCurrrency(playerTotal)
+        System.out.println(playerName + ": " + convertCurrrency(playerTotal)
             + "\nOpponent1: " + convertCurrrency(opponent1Total)
             + "\nOpponent2: " + convertCurrrency(opponent2Total)
             + "\nOpponent3: " + convertCurrrency(opponent3Total));
@@ -221,7 +226,7 @@ public class Poker {
     }
 
     private void printInitialHands() {
-        System.out.println("Player hand: " + playerHand);
+        System.out.println(playerName + "'s hand: " + playerHand);
         if (spyVisionOn) {
             System.out.println("Opponent1 hand: [" + opponent1Hand.get(0) + ", " + opponent1Hand.get(1) + "]"); 
             System.out.println("Opponent2 hand: [" + opponent2Hand.get(0) + ", " + opponent2Hand.get(1) + "]"); 
