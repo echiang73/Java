@@ -95,10 +95,6 @@ public class Poker {
 
         askStartingChipAmount();
 
-        // playerTotal = 0;
-        // opponent1Total = 0;
-        // opponent2Total = 0;
-        // opponent3Total = 0;
         playerHand.clear();
         opponent1Hand.clear();
         opponent2Hand.clear();
@@ -127,7 +123,8 @@ public class Poker {
                 opponent1Total = Integer.parseInt(chipAmount);
                 opponent2Total = Integer.parseInt(chipAmount);
                 opponent3Total = Integer.parseInt(chipAmount);
-                System.out.println("Everyone starts with " + convertCurrrency(playerTotal) + " in chips!");
+                System.out.println("Starting Chip Count: ");
+                printChipStatus();
                 break;
             } catch (Exception ex) {
                 System.out.println("Invalid entry, please enter a number");
@@ -137,9 +134,15 @@ public class Poker {
     }
 
     private String convertCurrrency(int amount) {
-        DecimalFormat formatter = new DecimalFormat("$#,##0"); 
-        BigDecimal amt = new BigDecimal("" + amount); 
-        return formatter.format(amt);  
+        BigDecimal bdAmt = new BigDecimal("" + amount); 
+        return new DecimalFormat("$#,##0").format(bdAmt); 
+    }
+
+    private void printChipStatus() {        
+        System.out.println("Player: " + convertCurrrency(playerTotal)
+            + "\nOpponent1: " + convertCurrrency(opponent1Total)
+            + "\nOpponent2: " + convertCurrrency(opponent2Total)
+            + "\nOpponent3: " + convertCurrrency(opponent3Total));
     }
 
     private void dealTwoCardsEach() {
