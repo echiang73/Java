@@ -63,7 +63,7 @@ public class Poker {
         } else if (winPercent > 50) {
             System.out.println("Good idea to leave while you are ahead.");
         } else {
-            System.out.println("Blackjack might not be your cup of tea.  Try slots.");
+            System.out.println("Poker might not be your cup of tea.  Try slots.");
         }
     }
 
