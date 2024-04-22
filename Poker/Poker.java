@@ -5,10 +5,10 @@ import java.util.*;
 public class Poker {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
-    int playerTotal = 0;
-    int opponent1Total = 0;
-    int opponent2Total = 0;
-    int opponent3Total = 0;
+    // int playerTotal = 0;
+    // int opponent1Total = 0;
+    // int opponent2Total = 0;
+    // int opponent3Total = 0;
     List<Card> deck;
     List<Card> playerHand = new ArrayList<>();
     List<Card> opponent1Hand = new ArrayList<>();
@@ -90,16 +90,18 @@ public class Poker {
     private void initGame() {
         deck = getNewDeck();
         cards = deck.listIterator();
-        playerTotal = 0;
-        opponent1Total = 0;
-        opponent2Total = 0;
-        opponent3Total = 0;
+        // playerTotal = 0;
+        // opponent1Total = 0;
+        // opponent2Total = 0;
+        // opponent3Total = 0;
         playerHand.clear();
         opponent1Hand.clear();
         opponent2Hand.clear();
         opponent3Hand.clear();
         
         dealTwoCardsEach();
+        dealFlop();
+        printInitialHands();
     }
 
     private List<Card> getNewDeck() {
@@ -120,18 +122,21 @@ public class Poker {
         opponent1Hand.add(getCard());
         opponent2Hand.add(getCard());
         opponent3Hand.add(getCard());
-        dealFlop();
 
-        playerTotal = assessHandTotal(playerHand);
-        opponent1Total = assessHandTotal(opponent1Hand);
-        opponent2Total = assessHandTotal(opponent1Hand);
-        opponent3Total = assessHandTotal(opponent1Hand);
-        printInitialHands();
+        // playerTotal = assessHandTotal(playerHand);
+        // opponent1Total = assessHandTotal(opponent1Hand);
+        // opponent2Total = assessHandTotal(opponent1Hand);
+        // opponent3Total = assessHandTotal(opponent1Hand);
+        // printInitialHands();
     }
 
     private void dealFlop() {
-        dealerFlopHand.add(getCard());
-        dealerFlopHand.add(getCard());
+        for (int i = 0; i < 3; i++) {
+            addToFlop();
+        }
+    }
+
+    private void addToFlop() {
         dealerFlopHand.add(getCard());
     }
 
@@ -196,5 +201,9 @@ public class Poker {
     // private int getCardValue(Card card) {
     //     return card.face().equals("A") ? 11 : ((Arrays.asList("K", "Q", "J")).contains(card.face()) ? 10 : Integer.parseInt(card.face()));
     // }
+
+    private void assessBestHand() {
+        // TODO
+    }
 
 }
