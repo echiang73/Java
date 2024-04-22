@@ -100,6 +100,8 @@ public class Poker {
 
         askStartingChipAmount();
 
+        betBlind();
+
         playerHand.clear();
         opponent1Hand.clear();
         opponent2Hand.clear();
@@ -148,6 +150,15 @@ public class Poker {
             + "\nOpponent1: " + convertCurrrency(opponent1Total)
             + "\nOpponent2: " + convertCurrrency(opponent2Total)
             + "\nOpponent3: " + convertCurrrency(opponent3Total));
+    }
+
+    private void betBlind() {
+        BigBlind bigBlind = BigBlind.random();
+        System.out.println("BigBlind is " + bigBlind);
+    }
+
+    public enum BigBlind {
+        USER, OPPONENT1, OPPONENT2, OPPONENT3;
     }
 
     private void dealTwoCardsEach() {
