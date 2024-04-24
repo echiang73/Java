@@ -8,10 +8,10 @@ public class Poker {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
     String playerName;
-    int playerTotal = 0;
-    int opponent1Total = 0;
-    int opponent2Total = 0;
-    int opponent3Total = 0;
+    int playerChipTotal = 0;
+    int opponent1ChipTotal = 0;
+    int opponent2ChipTotal = 0;
+    int opponent3ChipTotal = 0;
     List<Card> deck;
     List<Card> playerHand = new ArrayList<>();
     List<Card> opponent1Hand = new ArrayList<>();
@@ -103,7 +103,7 @@ public class Poker {
 
         askStartingChipAmount();
 
-        betBlind();
+        determineAndPayBlind();
 
         playerHand.clear();
         opponent1Hand.clear();
@@ -129,10 +129,10 @@ public class Poker {
         String chipAmount = scanner.nextLine();
         while(true) {
             try {
-                playerTotal = Integer.parseInt(chipAmount);
-                opponent1Total = Integer.parseInt(chipAmount);
-                opponent2Total = Integer.parseInt(chipAmount);
-                opponent3Total = Integer.parseInt(chipAmount);
+                playerChipTotal = Integer.parseInt(chipAmount);
+                opponent1ChipTotal = Integer.parseInt(chipAmount);
+                opponent2ChipTotal = Integer.parseInt(chipAmount);
+                opponent3ChipTotal = Integer.parseInt(chipAmount);
                 System.out.println("Starting Chip Count: ");
                 printChipStatus();
                 break;
@@ -149,25 +149,69 @@ public class Poker {
     }
 
     private void printChipStatus() {        
-        System.out.println(playerName + ": " + convertCurrrency(playerTotal)
-            + "\nOpponent1: " + convertCurrrency(opponent1Total)
-            + "\nOpponent2: " + convertCurrrency(opponent2Total)
-            + "\nOpponent3: " + convertCurrrency(opponent3Total));
-    }
-
-    private void betBlind() {
-        int randomInt = new Random().nextInt(Blind.values().length);
-        dealer = Blind.values()[randomInt];
-        smallBlind = Blind.values()[(randomInt + 1) % 4];
-        bigBlind = Blind.values()[(randomInt + 2) % 4];
-        System.out.println("Dealer is " + dealer);
-        System.out.println("Small Blind is " + smallBlind);
-        System.out.println("Big Blind is " + bigBlind);
+        System.out.println(playerName + ": " + convertCurrrency(playerChipTotal)
+            + "\nOpponent1: " + convertCurrrency(opponent1ChipTotal)
+            + "\nOpponent2: " + convertCurrrency(opponent2ChipTotal)
+            + "\nOpponent3: " + convertCurrrency(opponent3ChipTotal));
     }
 
     public enum Blind {
         USER, OPPONENT1, OPPONENT2, OPPONENT3;
     }
+
+    private void determineAndPayBlind() {
+        int randomInt = new Random().nextInt(Blind.values().length);
+        dealer = Blind.values()[randomInt];
+        smallBlind = Blind.values()[(randomInt + 1) % 4];
+        bigBlind = Blind.values()[(randomInt + 2) % 4];
+        System.out.println("For this round, " + dealer + " is the Dealer");
+        System.out.println("$10 Small Blind is posted by " + smallBlind);
+        System.out.println("$20 Big Blind is posted by " + bigBlind);
+        payBlind(smallBlind, bigBlind);
+        
+    }
+
+    private void payBlind(Blind smallBlind, Blind bigBlind) {
+        switch(smallBlind) {
+            case USER:
+                playerChipTotal -= 10;
+                break;
+            case OPPONENT1:
+                opponent1ChipTotal -= 10;
+                break;
+            case OPPONENT2:
+                opponent2ChipTotal -= 10;
+                break;
+            case OPPONENT3:
+                opponent3ChipTotal -= 10;
+                break;
+            default:
+                break;
+        }
+
+        switch(bigBlind) {
+            case USER:
+                playerChipTotal -= 20;
+                break;
+            case OPPONENT1:
+                opponent1ChipTotal -= 20;
+                break;
+            case OPPONENT2:
+                opponent2ChipTotal -= 20;
+                break;
+            case OPPONENT3:
+                opponent3ChipTotal -= 20;
+                break;
+            default:
+                break;
+        }
+
+        printChipStatus();
+
+    }
+
+
+
 
     private void dealTwoCardsEach() {
         playerHand.add(getCard());
