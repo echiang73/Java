@@ -17,7 +17,8 @@ public class Poker {
     List<Card> opponent1Hand = new ArrayList<>();
     List<Card> opponent2Hand = new ArrayList<>();
     List<Card> opponent3Hand = new ArrayList<>();
-    List<Card> dealerFlopHand = new ArrayList<>();
+    List<Card> burnCards = new ArrayList<>();
+    List<Card> flop = new ArrayList<>();
     ListIterator<Card> cards;
     String playerInput;
     double winPercent = 0;
@@ -227,18 +228,23 @@ public class Poker {
         // printInitialHands();
     }
 
+    private Card getCard() {
+        return cards.next();
+    }
+
     private void dealFlop() {
+        burnCard();
         for (int i = 0; i < 3; i++) {
             addToFlop();
         }
     }
 
     private void addToFlop() {
-        dealerFlopHand.add(getCard());
+        flop.add(getCard());
     }
 
-    private Card getCard() {
-        return cards.next();
+    private void burnCard() {
+        burnCards.add(getCard());
     }
 
     private int assessHandTotal(List<Card> hand) {
@@ -288,11 +294,12 @@ public class Poker {
     private void printInitialHands() {
         System.out.println(playerName + "'s hand: " + playerHand);
         if (spyVisionOn) {
-            System.out.println("Opponent1 hand: [" + opponent1Hand.get(0) + ", " + opponent1Hand.get(1) + "]"); 
-            System.out.println("Opponent2 hand: [" + opponent2Hand.get(0) + ", " + opponent2Hand.get(1) + "]"); 
-            System.out.println("Opponent3 hand: [" + opponent3Hand.get(0) + ", " + opponent3Hand.get(1) + "]"); 
+            System.out.println("Opponent1 hand: [" + opponent1Hand.get(0) + ", " + opponent1Hand.get(1) + "]");
+            System.out.println("Opponent2 hand: [" + opponent2Hand.get(0) + ", " + opponent2Hand.get(1) + "]");
+            System.out.println("Opponent3 hand: [" + opponent3Hand.get(0) + ", " + opponent3Hand.get(1) + "]");
+            System.out.println("Burn: " + burnCards);
         }
-        System.out.println("Flop: " + dealerFlopHand);
+        System.out.println("Flop: " + flop);
     }
 
     // private int getCardValue(Card card) {
