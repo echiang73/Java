@@ -30,9 +30,8 @@ public class Poker {
         System.out.println("\nWelcome to the Java Texas Hold'em Poker");
         playerName = promptPlayerName();
         checkSpyVision();
-        // playerInput = promptUserInput();
-
         initGame();
+        playerInput = promptUserInput();
 
         while(true) {
             if ("P".equals(playerInput)) {
@@ -54,6 +53,34 @@ public class Poker {
     private String promptPlayerName() {
         System.out.print("Please enter player name. ");
         return scanner.nextLine();
+    }
+
+    private void checkSpyVision() {
+        String spyVisionInput = promptIputForSpyVision();
+        while(true) {
+            if ("Y".equals(spyVisionInput)) {
+                spyVisionOn = true;
+                break;
+            } else if ("N".equals(spyVisionInput)) {
+                spyVisionOn = false;
+                break;
+            } else {
+                System.out.println("Invalid entry, enter Y or N");
+                spyVisionInput = scanner.nextLine().toUpperCase();
+            }
+        }
+    }
+
+    private String promptIputForSpyVision() {
+        System.out.println(playerName + ", before we start, would you like to put on Spy Vision sunglasses to see deck cards and opponents' cards?");
+        System.out.println("Y -> Yes\nN -> No");
+        return scanner.nextLine().toUpperCase();
+    }
+
+    private void initGame() {
+        askStartingChipAmount();
+        deck = getNewDeck();
+        cards = deck.listIterator();
     }
 
     private void askStartingChipAmount() {
@@ -103,28 +130,6 @@ public class Poker {
         }
     }
 
-    private void checkSpyVision() {
-        String spyVisionInput = promptIputForSpyVision();
-        while(true) {
-            if ("Y".equals(spyVisionInput)) {
-                spyVisionOn = true;
-                break;
-            } else if ("N".equals(spyVisionInput)) {
-                spyVisionOn = false;
-                break;
-            } else {
-                System.out.println("Invalid entry, enter Y or N");
-                spyVisionInput = scanner.nextLine().toUpperCase();
-            }
-        }
-    }
-
-    private String promptIputForSpyVision() {
-        System.out.println(playerName + ", before we start, would you like to put on Spy Vision sunglasses to see deck cards and opponents' cards?");
-        System.out.println("Y -> Yes\nN -> No");
-        return scanner.nextLine().toUpperCase();
-    }
-
     private void pokerGame() {
         determineAndPayBlind();
 
@@ -136,12 +141,6 @@ public class Poker {
         dealTwoCardsEach();
         dealFlop();
         printInitialHands();
-    }
-
-    private void initGame() {
-        askStartingChipAmount();
-        deck = getNewDeck();
-        cards = deck.listIterator();
     }
 
     private List<Card> getNewDeck() {
