@@ -30,7 +30,9 @@ public class Poker {
         System.out.println("\nWelcome to the Java Texas Hold'em Poker");
         playerName = promptPlayerName();
         checkSpyVision();
-        playerInput = promptUserInput();
+        // playerInput = promptUserInput();
+
+        initGame();
 
         while(true) {
             if ("P".equals(playerInput)) {
@@ -52,6 +54,37 @@ public class Poker {
     private String promptPlayerName() {
         System.out.print("Please enter player name. ");
         return scanner.nextLine();
+    }
+
+    private void askStartingChipAmount() {
+        System.out.print("How much chips would you like to start with? ");
+        String chipAmount = scanner.nextLine();
+        while(true) {
+            try {
+                playerChipTotal = Integer.parseInt(chipAmount);
+                opponent1ChipTotal = Integer.parseInt(chipAmount);
+                opponent2ChipTotal = Integer.parseInt(chipAmount);
+                opponent3ChipTotal = Integer.parseInt(chipAmount);
+                System.out.println("Starting Chip Count: ");
+                printChipStatus();
+                break;
+            } catch (Exception ex) {
+                System.out.println("Invalid entry, please enter a number");
+                chipAmount = scanner.nextLine();
+            }
+        }
+    }
+
+    private String convertCurrrency(int amount) {
+        BigDecimal bdAmt = new BigDecimal("" + amount); 
+        return new DecimalFormat("$#,##0").format(bdAmt); 
+    }
+
+    private void printChipStatus() {        
+        System.out.println(playerName + ": " + convertCurrrency(playerChipTotal)
+            + "\nOpponent1: " + convertCurrrency(opponent1ChipTotal)
+            + "\nOpponent2: " + convertCurrrency(opponent2ChipTotal)
+            + "\nOpponent3: " + convertCurrrency(opponent3ChipTotal));
     }
 
     private String promptUserInput() {
@@ -93,16 +126,6 @@ public class Poker {
     }
 
     private void pokerGame() {
-        initGame();
-
-    }
-
-    private void initGame() {
-        deck = getNewDeck();
-        cards = deck.listIterator();
-
-        askStartingChipAmount();
-
         determineAndPayBlind();
 
         playerHand.clear();
@@ -115,6 +138,12 @@ public class Poker {
         printInitialHands();
     }
 
+    private void initGame() {
+        askStartingChipAmount();
+        deck = getNewDeck();
+        cards = deck.listIterator();
+    }
+
     private List<Card> getNewDeck() {
         List<Card> newDeck = Card.getDoubleDeck();
         Collections.shuffle(newDeck);
@@ -122,37 +151,6 @@ public class Poker {
             Card.printDeck(newDeck);
         }
         return newDeck;
-    }
-
-    private void askStartingChipAmount() {
-        System.out.print("How much chips would you like to start with? ");
-        String chipAmount = scanner.nextLine();
-        while(true) {
-            try {
-                playerChipTotal = Integer.parseInt(chipAmount);
-                opponent1ChipTotal = Integer.parseInt(chipAmount);
-                opponent2ChipTotal = Integer.parseInt(chipAmount);
-                opponent3ChipTotal = Integer.parseInt(chipAmount);
-                System.out.println("Starting Chip Count: ");
-                printChipStatus();
-                break;
-            } catch (Exception ex) {
-                System.out.println("Invalid entry, please enter a number");
-                chipAmount = scanner.nextLine();
-            }
-        }
-    }
-
-    private String convertCurrrency(int amount) {
-        BigDecimal bdAmt = new BigDecimal("" + amount); 
-        return new DecimalFormat("$#,##0").format(bdAmt); 
-    }
-
-    private void printChipStatus() {        
-        System.out.println(playerName + ": " + convertCurrrency(playerChipTotal)
-            + "\nOpponent1: " + convertCurrrency(opponent1ChipTotal)
-            + "\nOpponent2: " + convertCurrrency(opponent2ChipTotal)
-            + "\nOpponent3: " + convertCurrrency(opponent3ChipTotal));
     }
 
     public enum Blind {
