@@ -22,8 +22,9 @@ public class Poker {
     String playerInput;
     double winPercent = 0;
     boolean spyVisionOn;
-    Blind bigBlind;
+    Blind dealer;
     Blind smallBlind;
+    Blind bigBlind;
 
     public void startGame() {
         System.out.println("\nWelcome to the Java Texas Hold'em Poker");
@@ -156,10 +157,12 @@ public class Poker {
 
     private void betBlind() {
         int randomInt = new Random().nextInt(Blind.values().length);
-        bigBlind = Blind.values()[randomInt];
+        dealer = Blind.values()[randomInt];
         smallBlind = Blind.values()[(randomInt + 1) % 4];
-        System.out.println("Big Blind is " + bigBlind);
+        bigBlind = Blind.values()[(randomInt + 2) % 4];
+        System.out.println("Dealer is " + dealer);
         System.out.println("Small Blind is " + smallBlind);
+        System.out.println("Big Blind is " + bigBlind);
     }
 
     public enum Blind {
