@@ -140,8 +140,17 @@ public class Poker {
         opponent3Hand.clear();
         
         dealTwoCardsEach();
+
+        // bet on blind to continue
+
         dealFlop();
         printInitialHands();
+
+        // testing blinds
+        nextBlind();
+        determineAndPayBlind();
+        nextBlind();
+        determineAndPayBlind();
     }
 
     private List<Card> getNewDeck() {
@@ -155,6 +164,11 @@ public class Poker {
 
     public enum Blind {
         USER, OPPONENT1, OPPONENT2, OPPONENT3;
+    }
+
+    private void nextBlind() {
+        smallBlind = Blind.values()[(smallBlind.ordinal() + 1) % 4];
+        bigBlind = Blind.values()[(bigBlind.ordinal() + 1) % 4];
     }
 
     private void determineAndPayBlind() {
@@ -239,12 +253,12 @@ public class Poker {
         }
     }
 
-    private void addToFlop() {
-        flop.add(getCard());
-    }
-
     private void burnCard() {
         burnCards.add(getCard());
+    }
+
+    private void addToFlop() {
+        flop.add(getCard());
     }
 
     private int assessHandTotal(List<Card> hand) {
