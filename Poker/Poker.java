@@ -23,7 +23,8 @@ public class Poker {
     String playerInput;
     double winPercent = 0;
     boolean spyVisionOn;
-    int randomDealerIndex;
+    int randomDealerIndex = -1;
+    Blind dealer;
 
     public void startGame() {
         System.out.println("\nWelcome to the Java Texas Hold'em Poker");
@@ -132,7 +133,14 @@ public class Poker {
     }
 
     private void pokerGame() {
-        determineAndPayBlind();
+        if (randomDealerIndex == -1) {
+            randomDealerIndex = new Random().nextInt(Blind.values().length);
+            dealer = Blind.values()[randomDealerIndex % 4];
+        } else {
+            randomDealerIndex++;
+            dealer = Blind.values()[randomDealerIndex % 4]; // does this increment?
+        }
+        determineBlinds();
 
         playerHand.clear();
         opponent1Hand.clear();
@@ -171,9 +179,7 @@ public class Poker {
     //     bigBlind = Blind.values()[(bigBlind.ordinal() + 1) % 4];
     // }
 
-    private void determineAndPayBlind() {
-        randomDealerIndex = new Random().nextInt(Blind.values().length);
-        Blind dealer = Blind.values()[randomDealerIndex % 4];
+    private void determineBlinds() {
         Blind smallBlind = Blind.values()[(dealer.ordinal() + 1) % 4];
         Blind bigBlind = Blind.values()[(dealer.ordinal() + 2) % 4];
         System.out.println("For this round, " + dealer + " is the Dealer");
