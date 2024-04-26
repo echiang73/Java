@@ -29,7 +29,10 @@ public class Poker {
         System.out.println("\nWelcome to the Java Texas Hold'em Poker");
         playerName = promptPlayerName();
         checkSpyVision();
-        initGame();
+        askStartingChipAmount();
+
+        initDeck();
+
         playerInput = promptUserInput();
 
         while(true) {
@@ -76,8 +79,7 @@ public class Poker {
         return scanner.nextLine().toUpperCase();
     }
 
-    private void initGame() {
-        askStartingChipAmount();
+    private void initDeck() {
         deck = getNewDeck();
         cards = deck.listIterator();
     }
