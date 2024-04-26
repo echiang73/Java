@@ -23,9 +23,7 @@ public class Poker {
     String playerInput;
     double winPercent = 0;
     boolean spyVisionOn;
-    Blind dealer;
-    Blind smallBlind;
-    Blind bigBlind;
+    int randomDealerIndex;
 
     public void startGame() {
         System.out.println("\nWelcome to the Java Texas Hold'em Poker");
@@ -146,11 +144,11 @@ public class Poker {
         dealFlop();
         printInitialHands();
 
-        // testing blinds
-        nextBlind();
-        determineAndPayBlind();
-        nextBlind();
-        determineAndPayBlind();
+        // // testing blinds
+        // nextBlind();
+        // determineAndPayBlind();
+        // nextBlind();
+        // determineAndPayBlind();
     }
 
     private List<Card> getNewDeck() {
@@ -166,25 +164,26 @@ public class Poker {
         USER, OPPONENT1, OPPONENT2, OPPONENT3;
     }
 
-    private void nextBlind() {
-        smallBlind = Blind.values()[(smallBlind.ordinal() + 1) % 4];
-        bigBlind = Blind.values()[(bigBlind.ordinal() + 1) % 4];
-    }
+    // private void nextBlind() {
+    //     smallBlind = Blind.values()[(smallBlind.ordinal() + 1) % 4];
+    //     bigBlind = Blind.values()[(bigBlind.ordinal() + 1) % 4];
+    // }
 
     private void determineAndPayBlind() {
-        int randomInt = new Random().nextInt(Blind.values().length);
-        dealer = Blind.values()[randomInt];
-        smallBlind = Blind.values()[(randomInt + 1) % 4];
-        bigBlind = Blind.values()[(randomInt + 2) % 4];
+        randomDealerIndex = new Random().nextInt(Blind.values().length);
+        Blind dealer = Blind.values()[randomDealerIndex % 4];
+        Blind smallBlind = Blind.values()[(dealer.ordinal() + 1) % 4];
+        Blind bigBlind = Blind.values()[(dealer.ordinal() + 2) % 4];
         System.out.println("For this round, " + dealer + " is the Dealer");
         System.out.println("$10 Small Blind is posted by " + smallBlind);
         System.out.println("$20 Big Blind is posted by " + bigBlind);
-        payBlind(smallBlind, bigBlind);
-        
+        payBlind(smallBlind);
+        payBlind(bigBlind);
+        printChipStatus();
     }
 
-    private void payBlind(Blind smallBlind, Blind bigBlind) {
-        switch(smallBlind) {
+    private void payBlind(Blind blind) {
+        switch(blind) {
             case USER:
                 playerChipTotal -= 10;
                 break;
@@ -200,26 +199,6 @@ public class Poker {
             default:
                 break;
         }
-
-        switch(bigBlind) {
-            case USER:
-                playerChipTotal -= 20;
-                break;
-            case OPPONENT1:
-                opponent1ChipTotal -= 20;
-                break;
-            case OPPONENT2:
-                opponent2ChipTotal -= 20;
-                break;
-            case OPPONENT3:
-                opponent3ChipTotal -= 20;
-                break;
-            default:
-                break;
-        }
-
-        printChipStatus();
-
     }
 
 
