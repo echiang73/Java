@@ -184,9 +184,9 @@ public class Poker {
         Blind bigBlind = Blind.values()[(dealer.ordinal() + 2) % 4];
         System.out.println("For this round, " + dealer + " is the Dealer");
         // System.out.println("$10 Small Blind is posted by " + smallBlind);
-        System.out.println("$10 Small Blind is posted by " + convertName(smallBlind));
+        System.out.println("$10 Small Blind is posted by " + convertNames(smallBlind));
         // System.out.println("$20 Big Blind is posted by " + bigBlind);
-        System.out.println("$20 Big Blind is posted by " + convertName(bigBlind));
+        System.out.println("$20 Big Blind is posted by " + convertNames(bigBlind));
         payBlind(smallBlind);
         payBlind(bigBlind);
         printChipStatus();
