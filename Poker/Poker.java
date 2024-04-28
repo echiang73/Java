@@ -111,9 +111,9 @@ public class Poker {
 
     private void printChipStatus() {        
         System.out.println(playerName + ": " + convertCurrrency(playerChipTotal)
-            + "\nOpponent1: " + convertCurrrency(opponent1ChipTotal)
-            + "\nOpponent2: " + convertCurrrency(opponent2ChipTotal)
-            + "\nOpponent3: " + convertCurrrency(opponent3ChipTotal));
+            + "\n" + convertNames(Blind.OPPONENT1) + ": " + convertCurrrency(opponent1ChipTotal)
+            + "\n" + convertNames(Blind.OPPONENT2) + ": " + convertCurrrency(opponent2ChipTotal)
+            + "\n" + convertNames(Blind.OPPONENT3) + ": " + convertCurrrency(opponent3ChipTotal));
     }
 
     private String promptUserInput() {
@@ -196,11 +196,11 @@ public class Poker {
         if (blind.equals(Blind.USER)) {
             return playerName;
         } else if (blind.equals(Blind.OPPONENT1)) {
-            return "Computer #1";
+            return "Larry";
         } else if (blind.equals(Blind.OPPONENT2)) {
-            return "Computer #2";
+            return "Curly";
         } else {
-            return "Computer #3";
+            return "Moe";
         }
     }
 
