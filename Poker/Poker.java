@@ -183,11 +183,25 @@ public class Poker {
         Blind smallBlind = Blind.values()[(dealer.ordinal() + 1) % 4];
         Blind bigBlind = Blind.values()[(dealer.ordinal() + 2) % 4];
         System.out.println("For this round, " + dealer + " is the Dealer");
-        System.out.println("$10 Small Blind is posted by " + smallBlind);
-        System.out.println("$20 Big Blind is posted by " + bigBlind);
+        // System.out.println("$10 Small Blind is posted by " + smallBlind);
+        System.out.println("$10 Small Blind is posted by " + convertName(smallBlind));
+        // System.out.println("$20 Big Blind is posted by " + bigBlind);
+        System.out.println("$20 Big Blind is posted by " + convertName(bigBlind));
         payBlind(smallBlind);
         payBlind(bigBlind);
         printChipStatus();
+    }
+
+    private String convertNames(Blind blind) {
+        if (blind.equals(Blind.USER)) {
+            return playerName;
+        } else if (blind.equals(Blind.OPPONENT1)) {
+            return "Computer #1";
+        } else if (blind.equals(Blind.OPPONENT2)) {
+            return "Computer #2";
+        } else {
+            return "Computer #3";
+        }
     }
 
     private void payBlind(Blind blind) {
