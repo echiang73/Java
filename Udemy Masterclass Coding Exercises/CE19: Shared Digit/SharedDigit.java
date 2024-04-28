@@ -81,7 +81,7 @@ public class SharedDigit {
         
         List<Integer> list1 = Arrays.asList(num1%10, num1/10);
         List<Integer> list2 = Arrays.asList(num2%10, num2/10);
-        return list1.stream().anyMatch(n1 -> list2.stream().anyMatch(n2 -> n1 == n2));
+        return list1.stream().anyMatch(n1 -> list2.stream().anyMatch(n2 -> n1.equals(n2)));
     }
 }
 
