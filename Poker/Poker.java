@@ -182,7 +182,7 @@ public class Poker {
     private void determineBlinds() {
         Blind smallBlind = Blind.values()[(dealer.ordinal() + 1) % 4];
         Blind bigBlind = Blind.values()[(dealer.ordinal() + 2) % 4];
-        System.out.println("For this round, " + dealer + " is the Dealer");
+        System.out.println("For this round, " + convertNames(dealer) + " is the Dealer");
         // System.out.println("$10 Small Blind is posted by " + smallBlind);
         System.out.println("$10 Small Blind is posted by " + convertNames(smallBlind));
         // System.out.println("$20 Big Blind is posted by " + bigBlind);
@@ -193,14 +193,14 @@ public class Poker {
     }
 
     private String convertNames(Blind blind) {
-        if (blind.equals(Blind.USER)) {
-            return playerName;
-        } else if (blind.equals(Blind.OPPONENT1)) {
+        if (blind.equals(Blind.OPPONENT1)) {
             return "Larry";
         } else if (blind.equals(Blind.OPPONENT2)) {
             return "Curly";
-        } else {
+        } else if (blind.equals(Blind.OPPONENT3)) {
             return "Moe";
+        } else {
+            return playerName;
         }
     }
 
@@ -309,9 +309,9 @@ public class Poker {
     private void printInitialHands() {
         System.out.println(playerName + "'s hand: " + playerHand);
         if (spyVisionOn) {
-            System.out.println("Opponent1 hand: [" + opponent1Hand.get(0) + ", " + opponent1Hand.get(1) + "]");
-            System.out.println("Opponent2 hand: [" + opponent2Hand.get(0) + ", " + opponent2Hand.get(1) + "]");
-            System.out.println("Opponent3 hand: [" + opponent3Hand.get(0) + ", " + opponent3Hand.get(1) + "]");
+            System.out.println(convertNames(Blind.OPPONENT1) + "'s hand: [" + opponent1Hand.get(0) + ", " + opponent1Hand.get(1) + "]");
+            System.out.println(convertNames(Blind.OPPONENT2) + "'s hand: [" + opponent2Hand.get(0) + ", " + opponent2Hand.get(1) + "]");
+            System.out.println(convertNames(Blind.OPPONENT3) + "'s hand: [" + opponent3Hand.get(0) + ", " + opponent3Hand.get(1) + "]");
             System.out.println("Burn: " + burnCards);
         }
         System.out.println("Flop: " + flop);
